@@ -8,15 +8,26 @@
 </head>
 <body>
 <div class="main_container">
-    <a class="AppHeader-logo" href="#" data-hotkey="g d" aria-label="Homepage" data-turbo="false">
-        <!-- Вставляем SVG через object -->
-        <object type="image/svg+xml" data="src/logo.svg" class="logo-svg"></object>
-    </a>
+    <div class="menu_container">
+        <a class="AppHeader-logo" href="#" data-hotkey="g d" aria-label="Homepage" data-turbo="false">
+            <!-- Вставляем SVG через object -->
+            <object type="image/svg+xml" data="src/logo.svg" class="logo-svg"></object>
+        </a>
+        <div class="menu_links" style="display: none;">
+        <a href="">Projects</a>
+        <a href="">Studio</a>
+        <a href="">Contacts</a>
+        </div>
+        <a class="side_menu">
+            <div id="lottie-menu" class="menu-lottie"></div>
+        </a>
+    </div>
     <div class="content_container">
         <div class="text_block"></div>
         <div class="img_container"></div>
     </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.10.0/lottie.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
