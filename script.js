@@ -1,27 +1,30 @@
-// Инициализация Lottie-анимации
-let animation = lottie.loadAnimation({
-    container: document.getElementById('lottie-menu'), // контейнер для анимации
-    renderer: 'svg', // рендеринг через SVG
-    loop: false, // не зацикливаем анимацию
-    autoplay: false, // не запускаем сразу
-    path: 'src/icons_menu.json' // путь к вашему файлу JSON
+const pageHeader = document.querySelector(".page-header");
+const toggleMenu = document.querySelector(".toggle-menu");
+const player = document.querySelector("lottie-player");
+const menuWrapper = document.querySelector(".menu-wrapper");
+const menuOpenedClass = "menu-open";
+const noTransitionClass = "no-transition";
+let timer;
+
+toggleMenu.addEventListener("click", function (e) {
+  e.preventDefault();
+  pageHeader.classList.toggle(menuOpenedClass);
+  if (pageHeader.classList.contains(menuOpenedClass)) {
+    this.setAttribute("aria-label", "Close navigation");
+    this.setAttribute("aria-expanded", "true");
+    player.getLottie().playSegments([0, 14], true);
+  } else {
+    this.setAttribute("aria-label", "Open navigation");
+    this.setAttribute("aria-expanded", "false");
+    player.getLottie().playSegments([14, 28], true);
+    //player.getLottie().playSegments([46, 90], true);
+  }
 });
 
-let isFirstSegmentPlayed = false;
-
-// Обработчик клика
-document.getElementById('lottie-menu').addEventListener('click', function() {
-
-    animation.play();
-    // if (currentFrame = ) {
-    //     animation.pause();
-    //     console.log('ytn');
-    // } 
-    if (animation.isPaused) {
-        animation.play();
-        let currentFrame = animation.currentFrame; 
-        if(currentFrame = 14) {
-            animation.pause();
-        }
-    }
+window.addEventListener("resize", function () {
+  menuWrapper.classList.add(noTransitionClass);
+  clearTimeout(timer);
+  timer = setTimeout(function () {
+    menuWrapper.classList.remove(noTransitionClass);
+  }, 500);
 });

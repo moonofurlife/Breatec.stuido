@@ -7,27 +7,53 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <header class="page-header">
+            <a class="AppHeader-logo" href="#" data-hotkey="g d" aria-label="Homepage" data-turbo="false">
+                <!-- Вставляем SVG через object -->
+                <object type="image/svg+xml" data="src/logo.svg" class="logo-svg"></object>
+            </a>
+        <nav>
+          <div class="page-header-inner">
+            <a href="" class="toggle-menu" role="button" aria-controls="menu-wrapper" aria-label="Open navigation" aria-expanded="false">
+              <lottie-player src="src/icons_menu.json"></lottie-player>
+            </a>
+          </div>
+          <div id="menu-wrapper" class="menu-wrapper">
+              <a href="">Projects</a>
+              <a href="">Studio</a>
+              <a href="">Contacts</a>
+          </div>
+        </nav>
+      </header>
 <div class="main_container">
-    <div class="menu_container">
-        <a class="AppHeader-logo" href="#" data-hotkey="g d" aria-label="Homepage" data-turbo="false">
-            <!-- Вставляем SVG через object -->
-            <object type="image/svg+xml" data="src/logo.svg" class="logo-svg"></object>
-        </a>
-        <div class="menu_links" style="display: none;">
-        <a href="">Projects</a>
-        <a href="">Studio</a>
-        <a href="">Contacts</a>
-        </div>
-        <a class="side_menu">
-            <div id="lottie-menu" class="menu-lottie"></div>
-        </a>
-    </div>
     <div class="content_container">
-        <div class="text_block"></div>
-        <div class="img_container"></div>
+        <div class="text_block">
+            <h1>Phone: +7 985 890 90 23</h1>
+            <object type="image/svg+xml" data="src/Vector 171.svg" class="vector_svg"></object>
+            <h1>E-mail: breatec@yandex.ru</h1>
+            <object type="image/svg+xml" data="src/Vector 171.svg" class="vector_svg"></object>
+            <h1>Address: Moscow, Nizhnyaya <br> Syromyatnicheskaya str., 10/9, entrance 9D, <br> floor 2, office 922</h1>
+            <object type="image/svg+xml" data="src/Vector 171.svg" class="vector_svg"></object>
+            <h1><a href="">Instagram</a>
+                <object type="image/svg+xml" data="src/Arrow 1.svg" class="arrow-svg"></object></h1>
+            <object type="image/svg+xml" data="src/Vector 174.svg" class="vector2_svg"></object>
+            <h1><a href="">LinkedIn</a>
+                <object type="image/svg+xml" data="src/Arrow 1.svg" class="arrow-svg"></object></h1>
+            <object type="image/svg+xml" data="src/Vector 174.svg" class="vector2_svg"></object>
+
+            <h1><a href="">Facebook</a>
+                <object type="image/svg+xml" data="src/Arrow 1.svg" class="larrow-svg"></object></h1>
+            <object type="image/svg+xml" data="src/Vector 174.svg" class="vector2_svg"></object>
+
+        </div>
+        <div class="img_container">
+            <!-- <img src="src/image 2.jpg" alt="map"> -->
+        </div>
     </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.10.0/lottie.min.js"></script>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<script src="https://unpkg.com/@lottiefiles/lottie-interactivity@latest/dist/lottie-interactivity.min.js"></script>
+<script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
 <script src="script.js"></script>
 </body>
 </html>
