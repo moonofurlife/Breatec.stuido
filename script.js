@@ -28,3 +28,4 @@ window.addEventListener("resize", function () {
     menuWrapper.classList.remove(noTransitionClass);
   }, 500);
 });
+
