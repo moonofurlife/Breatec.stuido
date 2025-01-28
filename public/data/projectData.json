@@ -1,0 +1,26 @@
+{
+    "projects": [
+      {
+        "name": "Sidney Prime",
+        "location": "Moscow",
+        "area": "4 600 м2",
+        "process": "Concept",
+        "images": [
+          "/public/src/0002_Sydney_Prime/00.jpg",
+          "/public/src/0002_Sydney_Prime/01.jpg",
+          "/public/src/0002_Sydney_Prime/02.jpg",
+          "/public/src/0002_Sydney_Prime/03.jpg",
+          "/public/src/0002_Sydney_Prime/04.jpg",
+          "/public/src/0002_Sydney_Prime/05.jpg",
+          "/public/src/0002_Sydney_Prime/06.jpg",
+          "/public/src/0002_Sydney_Prime/07.jpg",
+          "/public/src/0002_Sydney_Prime/08.jpg",
+          "/public/src/0002_Sydney_Prime/09.jpg",
+          "/public/src/0002_Sydney_Prime/10.jpg",
+          "/public/src/0002_Sydney_Prime/11.jpg",
+          "/public/src/0002_Sydney_Prime/12.jpg",
+          "/public/src/0002_Sydney_Prime/13.jpg"
+        ]
+      }
+    ]
+  }

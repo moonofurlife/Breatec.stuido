@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacts</title>
+    <link rel="stylesheet" href="/public/styles/contacts.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+    </style>
+</head>
+<body>
+    <div id="loader">Загрузка...</div>
+    <header class="page-header">
+            <a class="AppHeader-logo" href="#" aria-label="Homepage">
+                <object  type="image/svg+xml" data="/public/src/logo.svg" class="logo-svg"></object>
+            </a>
+        <nav>
+          <div class="page-header-inner">
+            <a href="" class="toggle-menu" role="button" aria-controls="menu-wrapper" aria-label="Open navigation" aria-expanded="false">
+              <lottie-player src="/public/src/icons_menu.json"></lottie-player>
+            </a>
+          </div>
+          <div id="menu-wrapper" class="menu-wrapper">
+              <a href="/project">Projects</a>
+              <a href="/studio">Studio</a>
+              <a href="/contacts">Contacts</a>
+          </div>
+        </nav>
+    </header>
+<div class="main_container">
+    <div class="content_container">
+        <div class="text_block">
+            <h1>Phone: +7 985 890 90 23</h1>
+            <hr width="100%" size="3" color="black" noshade>
+            <h1>E-mail: breatec@yandex.ru</h1>
+            <hr width="100%" size="3" color="black" noshade>
+            <h1>Address: Moscow, Nizhnyaya <br> Syromyatnicheskaya str., 10/9, entrance 9D, floor 2, office 922</h1>
+            <hr width="100%" size="3" color="black" noshade>
+            <h1><a href="#">Instagram</a>
+                <object type="image/svg+xml" data="/public/src/Arrow.svg" class="arrow-svg"></object></h1>
+                <hr width="100%" size="3" color=#6488FF noshade>
+            <h1><a href="#">LinkedIn</a>
+                <object type="image/svg+xml" data="/public/src/Arrow.svg" class="arrow-svg"></object></h1>
+                <hr width="100%" size="3" color=#6488FF noshade>
+            <h1><a href="#">Facebook</a>
+                <object type="image/svg+xml" data="/public/src/Arrow.svg" class="arrow-svg"></object></h1>
+                <hr width="100%" size="3" color=#6488FF noshade>
+
+        </div>
+        <div class="img_container">
+            <img src="/public/src/Contacts_map.jpg" alt="map">
+        </div>
+    </div>
+</div>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<script src="https://unpkg.com/@lottiefiles/lottie-interactivity@latest/dist/lottie-interactivity.min.js"></script>
+<script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+<script src="/public/scripts/script.js"></script>
+</body>
+</html>
