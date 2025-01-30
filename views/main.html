@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main</title>
+    <link rel="stylesheet" href="/public/styles/main.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+    </style>
+</head>
+<body>
+<header>
+    <div id="loader">Загрузка...</div>
+    <a class="AppHeader-logo" href="#" data-hotkey="g d" aria-label="Homepage" data-turbo="false">
+        <object type="image/svg+xml" data="/public/src/logo.svg" class="logo-svg"></object>
+    </a>
+</header>
+<div class="main_container">
+    <div class="content_container">
+        <div class="column">
+            <img id="mainImage" src="" alt="">
+        </div>
+    </div>
+    <div class="toggale_menu">
+        <ul>
+            <li data-img="/public/src/main_projects.jpg"><a href="/project">Project</a></li>
+            <li data-img="/public/src/project_image2.jpg"><a href="/studio">Studio</a></li>
+            <li data-img="/public/src/main_contacts.jpg"><a href="/contacts">Contacts</a></li>
+        </ul>
+    </div>
+</div>
+<footer>
+    <div class="footer_info">
+        <h2>breatec@yandex.ru</h2>
+        <h2>+7 985 890 90 23 </h2>
+    </div>
+</footer>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<script src="https://unpkg.com/@lottiefiles/lottie-interactivity@latest/dist/lottie-interactivity.min.js"></script>
+<script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+<script src="/public/scripts/main.js"></script>
+</body>
+</html>
