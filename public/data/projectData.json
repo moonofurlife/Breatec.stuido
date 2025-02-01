@@ -1,26 +1,29 @@
 {
-    "projects": [
-      {
-        "name": "Sidney Prime",
-        "location": "Moscow",
-        "area": "4 600 м2",
-        "process": "Concept",
-        "images": [
-          "/public/src/0002_Sydney_Prime/00.jpg",
-          "/public/src/0002_Sydney_Prime/01.jpg",
-          "/public/src/0002_Sydney_Prime/02.jpg",
-          "/public/src/0002_Sydney_Prime/03.jpg",
-          "/public/src/0002_Sydney_Prime/04.jpg",
-          "/public/src/0002_Sydney_Prime/05.jpg",
-          "/public/src/0002_Sydney_Prime/06.jpg",
-          "/public/src/0002_Sydney_Prime/07.jpg",
-          "/public/src/0002_Sydney_Prime/08.jpg",
-          "/public/src/0002_Sydney_Prime/09.jpg",
-          "/public/src/0002_Sydney_Prime/10.jpg",
-          "/public/src/0002_Sydney_Prime/11.jpg",
-          "/public/src/0002_Sydney_Prime/12.jpg",
-          "/public/src/0002_Sydney_Prime/13.jpg"
-        ]
-      }
-    ]
-  }
+  "projects": [
+    {
+      "id": "sydney_prime",
+      "slug": "sydney_prime",
+      "name": "Sydney Prime",
+      "location": "Moscow",
+      "area": "4 600 м²",
+      "year": 2024,
+      "process": "Concept",
+      "description": "A premium residential project in the heart of Moscow with a focus on sustainability and modern architecture.",
+      "images": [
+        "/public/src/projects/sydney-prime/01.jpg",
+        "/public/src/projects/sydney-prime/02.jpg",
+        "/public/src/projects/sydney-prime/03.jpg",
+        "/public/src/projects/sydney-prime/04.jpg",
+        "/public/src/projects/sydney-prime/05.jpg",
+        "/public/src/projects/sydney-prime/06.jpg",
+        "/public/src/projects/sydney-prime/07.jpg",
+        "/public/src/projects/sydney-prime/08.jpg",
+        "/public/src/projects/sydney-prime/09.jpg",
+        "/public/src/projects/sydney-prime/10.jpg",
+        "/public/src/projects/sydney-prime/11.jpg",
+        "/public/src/projects/sydney-prime/12.jpg",
+        "/public/src/projects/sydney-prime/13.jpg"
+      ]
+    }
+  ]
+}

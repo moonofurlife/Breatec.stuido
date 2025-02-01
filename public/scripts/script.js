@@ -1,6 +1,5 @@
 window.addEventListener('load', () => {
             document.getElementById('loader').classList.add('hidden');
-            document.getElementById('content').style.display = 'block';
         });
 const pageHeader = document.querySelector(".page-header");
 const toggleMenu = document.querySelector(".toggle-menu");

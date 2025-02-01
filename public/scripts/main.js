@@ -1,21 +1,36 @@
 window.addEventListener('load', () => {
     document.getElementById('loader').classList.add('hidden');
-    document.getElementById('content').style.display = 'block';
 });
 const menuItems = document.querySelectorAll('.toggale_menu li'); 
 const mainImage = document.querySelector('.column img'); 
+
+let currentTimeout;
 
 menuItems.forEach(item => {
     item.addEventListener('mouseenter', () => {
         const newImgSrc = item.getAttribute('data-img'); 
         if (newImgSrc) {
-            mainImage.setAttribute('src', newImgSrc);
-            mainImage.style.display = 'block'; 
+            clearTimeout(currentTimeout); 
+            if (mainImage.src !== newImgSrc) { 
+                mainImage.style.opacity = '0'; 
+                setTimeout(() => {
+                    mainImage.setAttribute('src', newImgSrc);
+                    mainImage.style.opacity = '1'; 
+                    mainImage.style.visibility = 'visible';
+                }, 300); 
+            } else {
+                mainImage.style.opacity = '1';
+                mainImage.style.visibility = 'visible';
+            }
         }
     });
-
     item.addEventListener('mouseleave', () => {
-        mainImage.removeAttribute('src'); 
-        mainImage.style.display = 'none'; 
+        currentTimeout = setTimeout(() => {
+            mainImage.style.opacity = '0'; 
+            
+            setTimeout(() => {
+                mainImage.style.visibility = 'hidden';
+            }, 300); 
+        }, 100); 
     });
 });

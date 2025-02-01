@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breatec</title>
+    <link rel="stylesheet" href="/public/styles/projects.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+    </style>
+</head>
+<body>
+  <div id="loader">Загрузка...</div>
+    <header class="page-header">
+            <a class="AppHeader-logo" href="#" data-hotkey="g d" aria-label="Homepage" data-turbo="false">
+                <object type="image/svg+xml" data="/public/src/logo.svg" class="logo-svg"></object>
+            </a>
+        <nav>
+          <div class="page-header-inner">
+            <a href="" class="toggle-menu" role="button" aria-controls="menu-wrapper" aria-label="Open navigation" aria-expanded="false">
+              <lottie-player src="/public/src/icons_menu.json"></lottie-player>
+            </a>
+          </div>
+          <div id="menu-wrapper" class="menu-wrapper">
+              <a href="/galery">Projects</a>
+              <a href="/studio">Studio</a>
+              <a href="/contacts">Contacts</a>
+          </div>
+        </nav>
+      </header>
+<div class="main_container">
+  <div class="content_container">
+    <li id="projectName" class="project_name">Sidney Prime</li>
+    <div class="img_container">
+      <img src="/public/src/SP1.jpg" alt="" class="slider_img">
+    </div>
+    <h1 class="buttom">More info</h1>
+    <div class="popup">
+      <div class="popup-content">
+        <div class="popup_header">
+          <li class="project_name">Sidney Prime</li>
+          <img src="/public/src/cross.svg" class="close-popup"></img>
+        </div>
+        <h2 id="projectLocation">Location: Moscow</h2>
+        <hr width="100%" size="3" color="black" noshade>
+        <h2 id="projectArea">Area: 4 600 м2</h2>
+        <hr width="100%" size="3" color="black" noshade>
+        <h2 id="projectProcess">Process: conept</h2>
+        <hr width="100%" size="3" color="black" noshade>
+        <h2>Text block</h2>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<script src="https://unpkg.com/@lottiefiles/lottie-interactivity@latest/dist/lottie-interactivity.min.js"></script>
+<script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+<script src="/public/scripts/project.js"></script>
+</body>
+</html>

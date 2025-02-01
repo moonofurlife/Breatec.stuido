@@ -88,7 +88,8 @@ body {
     color: black;
 }
 .menu-wrapper a:hover{
-    text-decoration: underline 2px ;
+    text-underline-offset: 3px;
+    text-decoration: underline 1px solid black;
 }   
 .page-header .menu-wrapper {
     transform: translateX(800px);
@@ -124,8 +125,10 @@ body {
     max-width: 183px; 
     height: 60px;
     z-index: 99999;
+    cursor: pointer;
 }
 .logo-svg {
+    pointer-events: none;
     width: 100%;  
     height: auto;  
 }
@@ -170,6 +173,10 @@ body {
     text-decoration: none;
     color: #6488FF;
 }
+.text_block a:hover{
+    text-underline-offset: 3px;
+    text-decoration: underline 1px solid #6488FF;
+}
 .arrow-svg{
     width:15.25px;
     height: auto;
@@ -184,7 +191,8 @@ hr{
 .img_container img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    object-position: right;
 }
 
 /* Медиа-запросы для адаптивности */
@@ -389,6 +397,7 @@ hr{
     }
     /* HEADER BLOCK */
     .page-header{
+        height: 60px;
         padding: 70px 20px 0;
     }
     .page-header .toggle-menu {
@@ -416,7 +425,7 @@ hr{
     /* MAIN CONTAINER */
     .content_container{
         flex-direction: row;
-        margin-top: 153px; 
+        margin-top: 135px; 
         gap: 100px;
     }
     .text_block {
