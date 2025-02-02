@@ -1,6 +1,6 @@
 window.addEventListener('load', () => {
-            document.getElementById('loader').classList.add('hidden');
-        });
+  document.getElementById('loader').style.display = 'none';
+});
 const pageHeader = document.querySelector(".page-header");
 const toggleMenu = document.querySelector(".toggle-menu");
 const player = document.querySelector("lottie-player");

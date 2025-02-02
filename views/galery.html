@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,92 +10,127 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
     </style>
 </head>
+
 <body>
-    <div id="loader">Загрузка...</div>
+    <div id="loader">
+        <svg version="1.1" class="pulse-loader" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px" y="0px" viewBox="0 0 88.6 82.8" style="enable-background:new 0 0 88.6 82.8;" xml:space="preserve">
+            <style type="text/css">
+                .st0 {
+                    fill: none;
+                    stroke: #010202;
+                    stroke-width: 0.25;
+                    stroke-miterlimit: 10;
+                }
+            </style>
+            <path class="st0" d="M34.7,49c-2-2.1-2.9-4.7-2.9-7.6c0-2.9,1-5.5,2.9-7.6c2-2.1,4.4-3.2,7.3-3.2s5.4,1.1,7.3,3.2
+	c2,2.1,2.9,4.7,2.9,7.6h12.8c0-6.5-2.2-12-6.6-16.3c-4.4-4.3-9.9-6.4-16.5-6.5c-6.6-0.1-12.1,2.2-16.5,6.5
+	c-4.4,4.3-6.6,9.8-6.6,16.3c0,6.5,2.2,12,6.6,16.3c4.4,4.3,9.9,6.5,16.5,6.5v-12C39.1,52.2,36.6,51.2,34.7,49z" />
+            <path class="st0" d="M65.1,64.2H52.3V51.6h12.8V64.2z" />
+        </svg>
+    </div>
     <header class="page-header">
         <a class="AppHeader-logo" href="/" data-hotkey="g d" aria-label="Homepage" data-turbo="false">
             <object type="image/svg+xml" data="/public/src/logo.svg" class="logo-svg"></object>
         </a>
         <nav>
             <div class="page-header-inner">
-                <a href="#" class="toggle-menu" role="button" aria-controls="menu-wrapper" aria-label="Open navigation" aria-expanded="false">
+                <a href="#" class="toggle-menu" role="button" aria-controls="menu-wrapper" aria-label="Open navigation"
+                    aria-expanded="false">
                     <lottie-player src="/public/src/icons_menu.json"></lottie-player>
                 </a>
             </div>
             <div id="menu-wrapper" class="menu-wrapper">
-                <a href="/galery">Projects</a>
+                <a href="/gallery">Projects</a>
                 <a href="/studio">Studio</a>
                 <a href="/contacts">Contacts</a>
             </div>
         </nav>
     </header>
-    <div class="main_container">
-        <div class="content_container">
-            <div class="cards_container">
-                <div class="card">
-                    <div class="image">
-                        <img src="/public/src/0001.1_Vanriver/00.jpg" alt="sidney_prime_mini">
-                    </div>
-                    <a href="/galery/vanriver"><h1>Vanriver</h1></a>
+    <div class="content_container">
+        <div class="cards_container">
+            <div class="card">
+                <div class="image">
+                    <img src="/public/src/0001.1_Vanriver/00.jpg" alt="sidney_prime_mini">
                 </div>
-                <div class="card">
-                    <div class="image">
-                        <img src="/public/src/0001.2_Vanriver.Interiors/00.jpg" alt="">
-                    </div>
-                    <a href="/galery/vanriver_interiors"><h1>Vanriver.Interiors</h1></a>
+                <a href="/gallery/vanriver">
+                    <h1>Vanriver</h1>
+                </a>
+            </div>
+            <div class="card">
+                <div class="image">
+                    <img src="/public/src/0001.2_Vanriver.Interiors/00.jpg" alt="">
                 </div>
-                <div class="card">
-                    <div class="image">
-                        <img src="/public/src/0002_Sydney_Prime/00.jpg" alt="">
-                    </div>
-                    <a href="/galery/sydney_prime"><h1>Sydney Prime</h1></a>
+                <a href="/gallery/vanriver_interiors">
+                    <h1>Vanriver.Interiors</h1>
+                </a>
+            </div>
+            <div class="card">
+                <div class="image">
+                    <img src="/public/src/0002_Sydney_Prime/00.jpg" alt="">
                 </div>
-                <div class="card">
-                    <div class="image">
-                        <img src="" alt="" style="background-color: aquamarine;">
-                    </div>
-                    <a href="/galery/"><h1>Petrovskiy Park. 2</h1></a>
+                <a href="/gallery/sydney_prime">
+                    <h1>Sydney Prime</h1>
+                </a>
+            </div>
+            <div class="card">
+                <div class="image">
+                    <img src="/public/src/0003_Vympel/00.jpg" alt="">
                 </div>
-                <div class="card">
-                    <div class="image" style="background-color: rgb(255, 74, 58);">
-                        <img src="" alt="">
-                    </div>
-                    <a href="/galery"><h1>Breatec.Office</h1></a>
+                <a href="/gallery/vympel">
+                    <h1>Petrovskiy Park. 2</h1>
+                </a>
+            </div>
+            <div class="card">
+                <div class="image" style="background-color: rgb(255, 74, 58);">
+                    <img src="" alt="">
                 </div>
-                <div class="card">
-                    <div class="image">
-                        <img src="/public/src/0005.1_Botanicheskaya_34/00.jpg" alt="">
-                    </div>
-                    <a href="/galery/botanicheskaya_34"><h1>Botanicheskaya 34</h1></a>
+                <a href="/gallery/breatec_office">
+                    <h1>Breatec.Office</h1>
+                </a>
+            </div>
+            <div class="card">
+                <div class="image">
+                    <img src="/public/src/0005.1_Botanicheskaya_34/00.jpg" alt="">
                 </div>
-                <div class="card">
-                    <div class="image">
-                        <img src="/public/src/0005.2_Botanicheskaya_34.Interiors/00.jpg" alt="">
-                    </div>
-                    <a href="/galery/botanicheskaya_34_interiors"><h1>Botanicheskaya 34. Interiors</h1></a>
+                <a href="/gallery/botanicheskaya">
+                    <h1>Botanicheskaya 34</h1>
+                </a>
+            </div>
+            <div class="card">
+                <div class="image">
+                    <img src="/public/src/0005.2_Botanicheskaya_34.Interiors/00.jpg" alt="">
                 </div>
-                <div class="card">
-                    <div class="image">
-                        <img src="/public/src/0006_Hadi_Taktasha/00.jpg" alt="">
-                    </div>
-                    <a href="/galery/hadi_taktasha"><h1>Hadi Taktasha</h1></a>
+                <a href="/gallery/botanicheskaya_interiors">
+                    <h1>Botanicheskaya 34. Interiors</h1>
+                </a>
+            </div>
+            <div class="card">
+                <div class="image">
+                    <img src="/public/src/0006_Hadi_Taktasha/00.jpg" alt="">
                 </div>
-                <div class="card">
-                    <div class="image">
-                        <img src="/public/src/0007_Shkiperskiy_19/00.jpg" alt="">
-                    </div>
-                    <a href="/galery/shkiperskiy_19"><h1>Shkiperskiy 19</h1></a>
+                <a href="/gallery/hadi_taktasha">
+                    <h1>Hadi Taktasha</h1>
+                </a>
+            </div>
+            <div class="card">
+                <div class="image">
+                    <img src="/public/src/0007_Shkiperskiy_19/00.jpg" alt="">
                 </div>
-                <div class="card">
-                    <div class="image">
-                        <img src="/public/src/0008_Zarechniy_Park/00.jpg" alt="">
-                    </div>
-                    <a href="/galery/zarechniy_park"><h1>Zarechniy Park</h1></a>
+                <a href="/gallery/shkiperskiy">
+                    <h1>Shkiperskiy 19</h1>
+                </a>
+            </div>
+            <div class="card">
+                <div class="image">
+                    <img src="/public/src/0008_Zarechniy_Park/00.jpg" alt="">
                 </div>
+                <a href="/gallery/zarechniy_park">
+                    <h1>Zarechniy Park</h1>
+                </a>
             </div>
         </div>
     </div>
-
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <script src="https://unpkg.com/@lottiefiles/lottie-interactivity@latest/dist/lottie-interactivity.min.js"></script>
     <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
@@ -106,4 +142,5 @@
         <h2>+7 985 890 90 23 </h2>
     </div>
 </footer>
+
 </html>

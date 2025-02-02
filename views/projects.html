@@ -1,67 +1,80 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Breatec - {{ project.name }}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/projects.css') }}">
+    <title>{{ project.name }}</title>
+    <link rel="stylesheet" href="/public/styles/projects.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
     </style>
 </head>
+
 <body>
-  <div id="loader">Загрузка...</div>
-  
-  <header class="page-header">
-    <a class="AppHeader-logo" href="/" aria-label="Homepage">
-      <object type="image/svg+xml" data="{{ url_for('static', filename='src/logo.svg') }}" class="logo-svg"></object>
-    </a>
-    <nav>
-      <div class="page-header-inner">
-        <a href="#" class="toggle-menu" role="button" aria-controls="menu-wrapper" aria-label="Open navigation" aria-expanded="false">
-          <lottie-player src="{{ url_for('static', filename='src/icons_menu.json') }}"></lottie-player>
-        </a>
-      </div>
-      <div id="menu-wrapper" class="menu-wrapper">
-        <a href="/projects">Projects</a>
-        <a href="/studio">Studio</a>
-        <a href="/contacts">Contacts</a>
-      </div>
-    </nav>
-  </header>
-
-  <div class="main_container">
-    <div class="content_container">
-      {% if project %}
-        <li id="projectName" class="project_name">{{ project.name }}</li>
-        <div class="img_container">
-          <img src="{{ url_for('static', filename=project.images[0]) }}" alt="{{ project.name }}" class="slider_img">
-        </div>
-        <h1 class="button">More info</h1>
-        <div class="popup">
-          <div class="popup-content">
-            <div class="popup_header">
-              <li class="project_name">{{ project.name }}</li>
-              <img src="{{ url_for('static', filename='src/cross.svg') }}" class="close-popup" />
-            </div>
-            <h2 id="projectLocation">Location: {{ project.location }}</h2>
-            <hr style="border: none; height: 3px; background-color: black;">
-            <h2 id="projectArea">Area: {{ project.area }}</h2>
-            <hr style="border: none; height: 3px; background-color: black;">
-            <h2 id="projectProcess">Process: {{ project.process }}</h2>
-            <hr style="border: none; height: 3px; background-color: black;">
-            <h2>{{ project.description }}</h2>
-          </div>
-        </div>
-      {% else %}
-        <p>Проект не найден.</p>
-      {% endif %}
+    <div id="loader">
+        <svg version="1.1" class="pulse-loader" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px" y="0px" viewBox="0 0 88.6 82.8" style="enable-background:new 0 0 88.6 82.8;" xml:space="preserve">
+            <style type="text/css">
+                .st0 {
+                    fill: none;
+                    stroke: #010202;
+                    stroke-width: 0.25;
+                    stroke-miterlimit: 10;
+                }
+            </style>
+            <path class="st0" d="M34.7,49c-2-2.1-2.9-4.7-2.9-7.6c0-2.9,1-5.5,2.9-7.6c2-2.1,4.4-3.2,7.3-3.2s5.4,1.1,7.3,3.2
+	c2,2.1,2.9,4.7,2.9,7.6h12.8c0-6.5-2.2-12-6.6-16.3c-4.4-4.3-9.9-6.4-16.5-6.5c-6.6-0.1-12.1,2.2-16.5,6.5
+	c-4.4,4.3-6.6,9.8-6.6,16.3c0,6.5,2.2,12,6.6,16.3c4.4,4.3,9.9,6.5,16.5,6.5v-12C39.1,52.2,36.6,51.2,34.7,49z" />
+            <path class="st0" d="M65.1,64.2H52.3V51.6h12.8V64.2z" />
+        </svg>
     </div>
-  </div>
-
-  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-  <script src="https://unpkg.com/@lottiefiles/lottie-interactivity@latest/dist/lottie-interactivity.min.js"></script>
-  <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
-  <script src="{{ url_for('static', filename='scripts/project.js') }}"></script>
+    <header class="page-header">
+        <a class="AppHeader-logo" href="#" data-hotkey="g d" aria-label="Homepage" data-turbo="false">
+            <object type="image/svg+xml" data="/public/src/logo.svg" class="logo-svg"></object>
+        </a>
+        <nav>
+            <div class="page-header-inner">
+                <a href="" class="toggle-menu" role="button" aria-controls="menu-wrapper" aria-label="Open navigation"
+                    aria-expanded="false">
+                    <lottie-player src="/public/src/icons_menu.json"></lottie-player>
+                </a>
+            </div>
+            <div id="menu-wrapper" class="menu-wrapper">
+                <a href="/gallery">Projects</a>
+                <a href="/studio">Studio</a>
+                <a href="/contacts">Contacts</a>
+            </div>
+        </nav>
+    </header>
+    <div class="main_container">
+        <div class="content_container">
+            <li id="projectName" class="project_name">{{ project.name }}</li>
+            <div class="img_container">
+                <img src="{{ project.image_url }}" alt="{{ project.name }}" class="slider_img">
+            </div>
+            <h1 class="buttom">More info</h1>
+            <div class="popup">
+                <div class="popup-content">
+                    <div class="popup_header">
+                        <li class="project_name">{{ project.name }}</li>
+                        <img src="/public/src/cross.svg" class="close-popup"></img>
+                    </div>
+                    <h2 id="projectLocation">Location: {{ project.location }}</h2>
+                    <hr width="100%" size="3" color="black" noshade>
+                    <h2 id="projectArea">Area: {{ project.area }}</h2>
+                    <hr width="100%" size="3" color="black" noshade>
+                    <h2 id="projectProcess">Process: {{ project.process }}</h2>
+                    <hr width="100%" size="3" color="black" noshade>
+                    <h2 id="description">{{ project.description }}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-interactivity@latest/dist/lottie-interactivity.min.js"></script>
+    <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+    <script src="/public/scripts/project.js"></script>
 </body>
+
 </html>

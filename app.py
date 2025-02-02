@@ -3,13 +3,16 @@ import os
 import json
 import logging
 
+# Создаем экземпляр приложения Flask
 app = Flask(__name__, static_folder='public', template_folder='views')
 
-# Включаем логирование ошибок
+# Включаем логирование
 logging.basicConfig(level=logging.ERROR)
 
-# Путь к данным проектов
-PROJECTS_DATA_PATH = 'public/data/projectData.json'
+# Загрузка данных о проектах из JSON файла
+def load_projects():
+    with open('public/data/projectData.json', 'r', encoding='utf-8') as file:
+        return json.load(file)
 
 # Главная страница
 @app.route('/')
@@ -27,43 +30,28 @@ def contacts():
     return render_template('contacts.html')
 
 # Страница "Gallery"
-@app.route('/galery')
-def galery():
+@app.route('/gallery')  # Исправлено опечатка: 'galery' -> 'gallery'
+def gallery():
     return render_template('galery.html')
 
 # Динамическая страница проекта
+@app.route('/gallery/<slug>')
+def project(slug):
+    projects = load_projects()['projects']
     
-@app.route('/galery/<project_slug>')
-def project(project_slug):
-    try:
-        print(f"Загрузка проекта: {project_slug}")
+    # Ищем проект по его слагу
+    project_data = next((project for project in projects if project['slug'] == slug), None)
 
-        json_path = os.path.abspath(PROJECTS_DATA_PATH)
-        print(f"Путь к JSON: {json_path}")
+    if project_data is None:
+        abort(404)  # Возвращаем 404 ошибку, если проект не найден
 
-        with open(PROJECTS_DATA_PATH, 'r', encoding='utf-8') as file:
-            data = json.load(file)
-
-        print("JSON загружен:", data)  # Логируем данные
-
-        projects = data.get('projects', [])
-        project = next((proj for proj in projects if proj.get('slug') == project_slug or proj.get('id') == project_slug), None)
-
-        if project:
-            print("Проект найден:", project)
-            return render_template('project.html', project=project)
-        else:
-            print("Проект не найден")
-            return jsonify({"error": "Проект не найден"}), 404
-    except Exception as e:
-        logging.error(f"Ошибка загрузки данных проекта: {e}")
-        return jsonify({"error": f"Ошибка загрузки проекта: {str(e)}"}), 500
-
+    return render_template('projects.html', project=project_data)
 
 # Обработка статических файлов (CSS, JS, изображения)
 @app.route('/public/<path:path>')
 def static_files(path):
     return send_from_directory('public', path)
 
+# Точка входа для приложения
 if __name__ == '__main__':
     app.run(debug=True)
