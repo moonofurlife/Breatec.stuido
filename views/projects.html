@@ -49,16 +49,18 @@
     </header>
     <div class="main_container">
         <div class="content_container">
-            <li id="projectName" class="project_name">{{ project.name }}</li>
             <div class="img_container">
                 <img src="{{ project.image_url }}" alt="{{ project.name }}" class="slider_img">
             </div>
-            <h1 class="buttom">More info</h1>
+            <div class="text_block">
+                <li id="projectName" class="project_name">{{ project.name }}</li>
+                <h1 class="buttom">More info</h1>
+            </div>
             <div class="popup">
                 <div class="popup-content">
                     <div class="popup_header">
                         <li class="project_name">{{ project.name }}</li>
-                        <img src="/public/src/cross.svg" class="close-popup"></img>
+                        <!-- <img src="/public/src/cross.svg" class="close-popup"></img> -->
                     </div>
                     <h2 id="projectLocation">Location: {{ project.location }}</h2>
                     <hr width="100%" size="3" color="black" noshade>

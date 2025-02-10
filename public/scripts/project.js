@@ -59,22 +59,15 @@ toggleMenu.addEventListener("click", toggleMenuHandler);
 document.addEventListener('DOMContentLoaded', () => {
   const button = document.querySelector('.buttom');
   const popup = document.querySelector('.popup');
-  const closePopup = document.querySelector('.close-popup');
-  console.log (button)
+
   if (button) {
     button.addEventListener('click', () => {
       popup.classList.add('active');
     });
   } 
-  if (closePopup) {
-    closePopup.addEventListener('click', () => {
-      popup.classList.remove('active');
-    });
-  }
+
   popup.addEventListener('click', (event) => {
-    if (event.target === popup) {
-      popup.classList.remove('active');
-    }
+    popup.classList.remove('active');
   });
 });
 

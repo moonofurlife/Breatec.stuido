@@ -5,7 +5,7 @@ const pageHeader = document.querySelector(".page-header");
 const toggleMenu = document.querySelector(".toggle-menu");
 const player = document.querySelector("lottie-player");
 const menuWrapper = document.querySelector(".menu-wrapper");
-const mainContainer = document.querySelector(".content_container");
+const mainContainer = document.querySelector(".main_container");
 const menuOpenedClass = "menu-open";
 const breakpoint = window.matchMedia("(max-width: 1079px)");
 
@@ -28,7 +28,7 @@ function toggleMenuHandler(e) {
       toggleMenu.setAttribute("aria-label", "Close navigation");
       toggleMenu.setAttribute("aria-expanded", "true");
       player.getLottie().playSegments([0, 14], true);
-      mainContainer.style.transform = "translateY(150px)"; // Опускаем вниз (пример)
+      mainContainer.style.transform = "translateY(200px)"; // Опускаем вниз (пример)
     }
   } else {
     // Если ширина экрана больше 1080px

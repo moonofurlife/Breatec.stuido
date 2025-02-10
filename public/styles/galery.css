@@ -62,6 +62,9 @@ body {
 }
 
 .page-header nav {
+    position: fixed;
+    top: 50px;
+    right: 0;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -79,15 +82,13 @@ body {
 .page-header .toggle-menu {
     position: fixed;
     top: 41.75px;
-    width: 53px;
-    height: 31.49px;
     right: 36px;
     cursor: pointer;
 }
 
 .page-header lottie-player {
     display: flex;
-    height: auto;
+    height: 32px;
 }
 
 .menu_links {
@@ -151,7 +152,7 @@ body {
     left: 36px;
     top: 38px;
     width: 100%;
-    max-width: 183px;
+    max-width: 150px;
     height: 60px;
     z-index: 99999;
     cursor: pointer;
@@ -172,24 +173,23 @@ body {
     display: flex;
     justify-content: flex-start;
     width: inherit;
-    gap: 17px;
+    gap: 30px;
     flex-wrap: wrap;
     box-sizing: border-box;
 }
 
 .card {
-    flex: 0 1 calc(50% - 10px);
+    width: 100%;
     cursor: pointer;
 }
 
 .card h1 {
     margin: 10px 0 0 0;
     font-family: inter;
-    opacity: 0;
+    opacity: 1;
     font-size: 22px;
     font-weight: 400;
-    line-height: 26.61px;
-    width: 36.44vw;
+    width: 100%;
     text-underline-offset: 3px;
     text-decoration: underline 1px solid black;
     word-wrap: break-word;
@@ -200,14 +200,13 @@ body {
 
 .image {
     pointer-events: none;
-    width: inherit;
-    aspect-ratio: 1/1;
+    height: 220px;
 }
 
 .image img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 .card:hover h1 {
@@ -221,6 +220,9 @@ a {
 }
 
 /* FOOTER BLOCK */
+footer{
+    position: relative;
+}
 .footer_info {
     width: 88vw;
     display: flex;
@@ -244,11 +246,24 @@ a {
 }
 
 .footer_info h2:hover {
-    text-decoration: underline 2px solid black;
+    text-decoration: underline 1px solid black;
 }
 
 /* Медиа-запросы для адаптивности */
 /* планшет */
+@media (min-width:600px) {
+    .cards_container {
+        gap: 20px 11.4%;
+    }
+    
+    .card {
+        width: 44.2%;
+    }
+    .image {
+        height: 220px;
+    }
+    
+}
 @media (min-width: 1080px) and (max-width: 1169px) {
     body {
         margin-top: 70px;
@@ -263,8 +278,6 @@ a {
 
     .page-header .toggle-menu {
         top: 70px;
-        width: 60px;
-        height: 60px;
         right: 90px;
     }
 
@@ -289,7 +302,6 @@ a {
     .AppHeader-logo {
         left: 90px;
         top: 70px;
-        max-width: 270px;
     }
 
     /* MAIN CONTAINER */
@@ -298,12 +310,22 @@ a {
         gap: 20px;
     }
 
+    .cards_container{
+        margin-top: 153px;
+        gap: 50px 6.6%;
+    }
+
     .card {
-        flex: 0 1 calc(33.33% - 14px);
+        width: 28.8%;
+    }
+    .image {
+        height: inherit;
+        aspect-ratio: 1/1;
     }
 
     .card h1 {
-        width: 26.36vh;
+        opacity: 0;
+        width: 100%;
     }
 
     /* FOOTER BLOCK */
@@ -329,8 +351,6 @@ a {
 
     .page-header .toggle-menu {
         top: 70px;
-        width: 60px;
-        height: 60px;
         right: 90px;
     }
 
@@ -355,21 +375,26 @@ a {
     .AppHeader-logo {
         left: 90px;
         top: 70px;
-        max-width: 270px;
     }
 
     /* MAIN CONTAINER */
     .cards_container {
         margin-top: 153px;
-        gap: 20px 60px;
+        gap: 50px 6.06%;
     }
 
     .card {
-        flex: 0 1 calc(33.33% - 40px);
+        width: 29.2%;
+    }
+
+    .image{
+        height: inherit;
+        aspect-ratio: 1/1;
     }
 
     .card h1 {
-        width: 26.36vh;
+        opacity: 0;
+        width: 100%;
     }
 }
 
@@ -389,8 +414,6 @@ a {
 
     .page-header .toggle-menu {
         top: 70px;
-        width: 60px;
-        height: 60px;
         right: 90px;
     }
 
@@ -420,86 +443,23 @@ a {
     .AppHeader-logo {
         left: 90px;
         top: 70px;
-        max-width: 270px;
     }
 
     /* MAIN CONTAINER */
     .cards_container {
-        gap: 70px 17px;
+        gap: 50px 4.76%;
     }
 
     .card {
-        flex: 0 1 calc(25% - 13px);
+        width: 21.4%;
+    }
+    .image{
+        height: inherit;
+        aspect-ratio: 1/1;
     }
 
     .card h1 {
-        width: 26.36vh;
-    }
-}
-
-@media (min-width:1600px) {
-    body {
-        margin-top: 70px;
-        margin-left: 90px;
-        margin-right: 90px;
-    }
-
-    /* HEADER BLOCK */
-    .page-header {
-        padding: 70px 20px 0;
-        height: 70px;
-    }
-
-    .page-header .toggle-menu {
-        top: 70px;
-        width: 60px;
-        height: 60px;
-        right: 90px;
-    }
-
-    .page-header .menu-wrapper:not(:last-child) {
-        margin-right: 50px;
-    }
-
-    .page-header .menu-wrapper a:not(:last-child) {
-        margin: 0 25px 20px;
-    }
-
-    .menu-wrapper a:nth-child(3) {
-        padding-right: 200px;
-        padding-left: 25px;
-    }
-
-    .menu-wrapper a {
-        font-size: 50px;
-    }
-
-    .page-header .menu-wrapper {
-        transform: translateX(820px);
-        transition: transform 1s ease-in-out;
-    }
-
-    /** LOGO BLOCK **/
-    .AppHeader-logo {
-        left: 90px;
-        top: 70px;
-        max-width: 270px;
-    }
-
-    /* MAIN CONTAINER */
-    .cards_container {
-        gap: 0.78125%;
-    }
-
-    .card {
-        flex: 0 1 calc(20% - 0.625%);
-    }
-
-    .card h1 {
-        width: 26.36vh;
-    }
-
-    footer {
-        margin-top: 1%;
+        opacity: 0;
+        width: 100%;
     }
 }

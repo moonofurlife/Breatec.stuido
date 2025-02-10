@@ -24,6 +24,12 @@ def main():
 def studio():
     return render_template('studio.html')
 
+
+@app.route('/pr_g')
+def progect_galery():
+    return render_template('progect_galery.html')
+
+
 # Страница "Contacts"
 @app.route('/contacts')
 def contacts():

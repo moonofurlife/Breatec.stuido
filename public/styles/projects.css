@@ -78,9 +78,8 @@ body {
 
 .page-header .toggle-menu {
     position: fixed;
-    top: 41.75px;
-    width: auto;
-    height: 31.49px;
+    top: 38px;
+    width: 40px;
     right: 36px;
     cursor: pointer;
 }
@@ -118,7 +117,7 @@ body {
 }
 
 .page-header .menu-wrapper {
-    transform: translateX(800px);
+    transform: translateX(100vw);
     transition: transform 1s ease-in-out;
 }
 
@@ -130,7 +129,7 @@ body {
     display: inline-block;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1079px) {
     .page-header .menu-wrapper {
         position: fixed;
         width: 100%;
@@ -174,44 +173,40 @@ body {
     display: flex;
     width: inherit;
     margin-top: 106px;
-    flex-direction: column;
+    flex-direction:column-reverse;
     justify-content: space-between;
     transition: transform 1s ease-in-out;
 }
 
 .img_container {
     width: inherit;
-    aspect-ratio: 1 / 1.13;
 }
 
 .slider_img {
     width: 100%;
-    height: 100%;
+    height: 70vh;
     object-fit: contain;
     cursor: pointer;
     transition: opacity 0.5s ease-in-out;
 }
+.text_block{
+    display: flex;
+    margin-top: 20px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
 
 .project_name {
-    order: -2;
-    font-weight: 600;
-    font-size: 30px;
-    line-height: 36.2px;
+    font-weight: 400;
+    font-size: 25px;
     list-style-type: none;
 }
 
-.project_name::after {
-    content: url(/public/src/squ.svg);
-    padding-left: 10px;
-}
 
 .buttom {
-    order: -1;
     font-weight: 400;
-    font-size: 30px;
-    line-height: 36.2px;
-    margin-top: 19px;
-    margin-bottom: 30px;
+    font-size: 25px;
     cursor: pointer;
 }
 
@@ -256,15 +251,12 @@ body {
 .popup-content li {
     font-weight: 400;
     font-size: 30px;
-    line-height: 36px;
-    margin-bottom: 35px;
     list-style-type: none;
 }
 
 .popup-content h2 {
-    font-size: 20.11px;
+    font-size: 20px;
     font-weight: 400;
-    line-height: 24.33px;
 }
 
 #description{
@@ -308,17 +300,14 @@ body {
     /* HEADER BLOCK */
     .page-header {
         height: 122px;
-        padding: 70px 20px 0;
     }
 
-    .page-header .toggle-menu {
-        right: 60px;
+    .page-header .menu-wrapper {
+        padding-top: 55px;
     }
 
     .page-header .toggle-menu {
         top: 70px;
-        width: 60px;
-        height: 60px;
         right: 70px;
     }
 
@@ -343,32 +332,12 @@ body {
     .AppHeader-logo {
         left: 78px;
         top: 70px;
-        max-width: 270px;
     }
 
     /* MAIN CONTAINER */
     .content_container {
-        width: auto;
+        width: 100%;
         margin-top: 12.79vh;
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-
-    .project_name {
-        order: -2;
-        margin-bottom: 35px;
-    }
-
-    .buttom {
-        order: -1;
-        margin-top: 0;
-        margin-bottom: 35px;
-    }
-
-    .img_container {
-        order: 0;
-        width: 86.2vw;
-        height: 63vh;
     }
 
     /* POPUP */
@@ -404,14 +373,14 @@ body {
     /* HEADER BLOCK */
     .page-header {
         height: 122px;
-        padding: 70px 20px 0;
     }
 
     .page-header .toggle-menu {
         top: 70px;
-        width: 60px;
-        height: 60px;
         right: 90px;
+    }
+    .page-header .menu-wrapper {
+        padding-top: 55px;
     }
 
     .page-header .menu-wrapper:not(:last-child) {
@@ -435,27 +404,13 @@ body {
     .AppHeader-logo {
         left: 90px;
         top: 70px;
-        max-width: 270px;
     }
 
     /* MAIN CONTAINER */
     .content_container {
-        margin-top: 12.79vh;
+        margin-top: 7.9vh;
         align-items: center;
-    }
-
-    .project_name {
-        order: 0;
-        margin-bottom: 35px;
-    }
-
-    .img_container {
-        width: 67.7vw;
-        height: 64vh;
-    }
-
-    .buttom {
-        order: 0;
+        flex-direction: column;
     }
 
     .popup-content {
@@ -471,10 +426,10 @@ body {
         font-size: 35px;
         line-height: 42.34px;
     }
-
+/* 
     .close-popup {
         height: 41.36px;
-    }
+    } */
 }
 
 /* большие экраны */
@@ -492,8 +447,6 @@ body {
 
     .page-header .toggle-menu {
         top: 70px;
-        width: 60px;
-        height: 60px;
         right: 90px;
     }
 
@@ -515,50 +468,28 @@ body {
     }
 
     .page-header .menu-wrapper {
-        padding-top: 70px;
-        transform: translateX(820px);
-        transition: transform 1s ease-in-out;
+        padding-top: 55px;
     }
 
     /** LOGO BLOCK **/
     .AppHeader-logo {
         left: 90px;
         top: 70px;
-        max-width: 270px;
     }
 
     /* MAIN CONTAINER */
     .content_container {
-        margin-top: 12.79vh;
+        margin-top: 7.9vh;
         align-items: center;
-    }
-
-    .project_name {
-        order: 0;
-        margin-bottom: 35px;
+        flex-direction: column;
     }
 
     .img_container {
-        width: 67.7vw;
-        height: 50vh;
-    }
-
-    .buttom {
-        order: 0;
+        width: 100%;
     }
 
     .popup-content {
         padding: 0 90px;
-    }
-
-    .popup-content li {
-        font-size: 50px;
-        line-height: 60.49px;
-    }
-
-    .popup-content h2 {
-        font-size: 35px;
-        line-height: 42.34px;
     }
 
     .close-popup {

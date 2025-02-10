@@ -2,7 +2,7 @@ window.addEventListener('load', () => {
     document.getElementById('loader').classList.add('hidden');
 });
 const menuItems = document.querySelectorAll('.toggale_menu li'); 
-const mainImage = document.querySelector('.column img'); 
+const mainImage = document.getElementById('mainImage'); 
 
 let currentTimeout;
 
