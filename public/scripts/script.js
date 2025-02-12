@@ -1,6 +1,13 @@
-window.addEventListener('load', () => {
-  document.getElementById('loader').style.display = 'none';
-});
+document.addEventListener('DOMContentLoaded', () => {
+  const loaderAnimation = document.getElementById('loaderAnimation');
+
+  // Запускаем анимацию загрузки
+  loaderAnimation.play();
+  
+  // Прячем loader после завершения анимации
+  loaderAnimation.addEventListener('complete', () => {
+      document.getElementById('loader').style.display = 'none';
+  });
 const pageHeader = document.querySelector(".page-header");
 const toggleMenu = document.querySelector(".toggle-menu");
 const player = document.querySelector("lottie-player");
@@ -50,3 +57,4 @@ function toggleMenuHandler(e) {
 
 // Добавляем обработчик события
 toggleMenu.addEventListener("click", toggleMenuHandler);
+});

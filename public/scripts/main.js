@@ -1,5 +1,13 @@
-window.addEventListener('load', () => {
-    document.getElementById('loader').classList.add('hidden');
+document.addEventListener('DOMContentLoaded', () => {
+    const loaderAnimation = document.getElementById('loaderAnimation');
+  
+    // Запускаем анимацию загрузки
+    loaderAnimation.play();
+    
+    // Прячем loader после завершения анимации
+    loaderAnimation.addEventListener('complete', () => {
+        document.getElementById('loader').style.display = 'none';
+    });
 });
 const menuItems = document.querySelectorAll('.toggale_menu li'); 
 const mainImage = document.getElementById('mainImage'); 

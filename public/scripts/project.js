@@ -1,7 +1,13 @@
-window.addEventListener('load', () => {
-  setTimeout(() => {
+document.addEventListener('DOMContentLoaded', () => {
+  const loaderAnimation = document.getElementById('loaderAnimation');
+
+  // Запускаем анимацию загрузки
+  loaderAnimation.play();
+  
+  // Прячем loader после завершения анимации
+  loaderAnimation.addEventListener('complete', () => {
       document.getElementById('loader').style.display = 'none';
-  }, 1000); // Задержка в 1 секунду (1000 миллисекунд)
+  });
 });
 const pageHeader = document.querySelector(".page-header");
 const toggleMenu = document.querySelector(".toggle-menu");

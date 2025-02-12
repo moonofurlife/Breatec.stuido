@@ -28,26 +28,9 @@ body {
     align-items: center;
     z-index: 9999;
 }
-#loader svg {
-    width: 25%;
-    aspect-ratio: 1/1;
+#loaderAnimation{
+    width: 15%;
 }
-.pulse-loader {
-    animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-    0% {
-        transform: scale(1.3);
-    }
-    50% {
-        transform: scale(1.6);
-    }
-    100% {
-        transform: scale(1.3);
-    }
-}
-
 /* HEADER BLOCK */
 .page-header {
     position: fixed;
@@ -227,6 +210,7 @@ body {
     text-align: center;
     z-index: 1000;
     transition: bottom 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    cursor: url("/public/src/cursor.svg"), auto;
 }
 
 .popup-content {
@@ -256,7 +240,8 @@ body {
 
 .popup-content h2 {
     font-size: 20px;
-    font-weight: 400;
+    font-weight: 300;
+    margin-bottom: 35px;
 }
 
 #description{
@@ -342,6 +327,7 @@ body {
 
     /* POPUP */
     .popup-content {
+        cursor: url(/public/src/close.svg), auto;
         padding: 0 78px;
     }
 

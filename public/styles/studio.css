@@ -27,24 +27,8 @@ body {
     align-items: center;
     z-index: 9999;
 }
-#loader svg {
-    width: 25%;
-    aspect-ratio: 1/1;
-}
-.pulse-loader {
-    animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-    0% {
-        transform: scale(1.3);
-    }
-    50% {
-        transform: scale(1.6);
-    }
-    100% {
-        transform: scale(1.3);
-    }
+#loaderAnimation{
+    width: 15%;
 }
 /* HEADER BLOCK */
 .page-header {
@@ -59,6 +43,9 @@ body {
     z-index: 99;
 }
 .page-header nav {
+    position: fixed;
+    top: 50px;
+    right: 0;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -106,7 +93,7 @@ body {
     text-decoration: underline 1px solid black;
 }   
 .page-header .menu-wrapper {
-    transform: translateX(800px);
+    transform: translateX(100vw);
     transition: transform 1s ease-in-out;
 }   
 .page-header.menu-open .menu-wrapper {
@@ -115,7 +102,7 @@ body {
 .page-header .menu-wrapper a {
     display: inline-block;
 }
-@media (max-width: 900px) {
+@media (max-width: 1080px) {
     .page-header .menu-wrapper {
         position: fixed;
         width: 100%;
@@ -225,37 +212,6 @@ body {
     height: 100%;
 }
 
-/* FOOTER BLOCK */
-footer {
-    margin-top: auto; 
-}
-.footer_info{
-    bottom: 0;
-    left:0;
-    width: 100%;
-    background-color: white;
-    gap:10px;
-    flex-wrap: wrap;
-    padding-top: 20px;
-    padding-bottom: 38px;
-}
-.footer_info h2{
-    cursor: pointer;
-    margin: 0;
-    font-family: inter;
-    font-size: 20px;
-    font-weight: 400;
-}
-.footer_info h2:nth-child(1){
-    margin-right: 50px;
-}
-.footer_info h2:hover{
-    text-underline-offset: 3px;
-    text-decoration: underline 1px solid black;
-}
-
-
-
 /* Медиа-запросы для адаптивности */
 /* планшет */
 @media (min-width: 1080px) and (max-width: 1169px) {
@@ -330,10 +286,6 @@ footer {
         aspect-ratio: 1/1;
     }
 
-    .footer_info{
-        display: flex;
-    }
-
 }
 /* ноутбук  */
 @media (min-width:1170px) and (max-width: 1350px) {
@@ -399,13 +351,6 @@ footer {
         height: inherit;
         aspect-ratio: 1/1;
     }
-
-    /* FOOTER BLOCK */
-    .footer_info{
-        display: flex;
-        padding-top: 50px;
-        padding-bottom: 70px;
-    }
     
 }
 /* большие экраны */
@@ -419,9 +364,6 @@ footer {
     /* HEADER BLOCK */
     .page-header{
         height: 122px;
-    }
-    .page-header nav{
-        padding-top: 70px;
     }
     .page-header .toggle-menu {
         top: 70px;
@@ -480,9 +422,5 @@ footer {
         height: inherit;
         aspect-ratio: 1/1;
     }
-    /* FOOTER BLOCK */
-    .footer_info{
-        display: flex;
-        padding-top: 20px;
-    }
+
 }
