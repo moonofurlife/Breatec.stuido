@@ -22,7 +22,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Build app
+      - name: Run app
         run: python app.py
 
       - name: Deploy to GitHub Pages
