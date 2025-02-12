@@ -8,6 +8,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -15,7 +16,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.8'  # Убедитесь, что используете нужную версию Python
+          python-version: '3.8'  # Укажите нужную версию Python
 
       - name: Install dependencies
         run: |
@@ -23,16 +24,11 @@ jobs:
           pip install -r requirements.txt
 
       - name: Generate static site
-        env:
-          FLASK_APP: app.py
         run: |
-          flask init-db  # Создаем базу данных Flask
-          flask create-all  # Создаем все базовые таблицы
-          python -m flask run --host 0.0.0.0 --port 5000  # Запускает flask в режиме debug
-          cd public  # Пишем команду, чтобы изменить каталог
+          python app.py  # Сгенерируйте статические файлы
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/action-gh-pages@v3
+        uses: peaceiris/action-gh-pages@v3.10.0  # Используйте последнюю стабильную версию
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+          publish_dir: ./public  # Путь к директории, которую вы хотите опубликовать
