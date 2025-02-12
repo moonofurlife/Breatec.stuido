@@ -1,6 +1,13 @@
-window.addEventListener('load', () => {
-  document.getElementById('loader').classList.add('hidden');
-  document.getElementById('content').style.display = 'block';
+document.addEventListener('DOMContentLoaded', () => {
+  const loaderAnimation = document.getElementById('loaderAnimation');
+
+  // Запускаем анимацию загрузки
+  loaderAnimation.play();
+  
+  // Прячем loader после завершения анимации
+  loaderAnimation.addEventListener('complete', () => {
+      document.getElementById('loader').style.display = 'none';
+  });
 });
 const pageHeader = document.querySelector(".page-header");
 const toggleMenu = document.querySelector(".toggle-menu");
@@ -38,13 +45,13 @@ function toggleMenuHandler(e) {
   } else {
     // Если ширина экрана больше 1080px
     if (pageHeader.classList.contains(menuOpenedClass)) {
-      // Закрытие меню
+      
       pageHeader.classList.remove(menuOpenedClass);
       toggleMenu.setAttribute("aria-label", "Open navigation");
       toggleMenu.setAttribute("aria-expanded", "false");
       player.getLottie().playSegments([14, 28], true);
     } else {
-      // Открытие меню
+      
       pageHeader.classList.add(menuOpenedClass);
       toggleMenu.setAttribute("aria-label", "Close navigation");
       toggleMenu.setAttribute("aria-expanded", "true");
@@ -53,88 +60,83 @@ function toggleMenuHandler(e) {
   }
 }
 
-// Добавляем обработчик события
 toggleMenu.addEventListener("click", toggleMenuHandler);
 
 document.addEventListener('DOMContentLoaded', () => {
   const button = document.querySelector('.buttom');
   const popup = document.querySelector('.popup');
-  const closePopup = document.querySelector('.close-popup');
 
   if (button) {
     button.addEventListener('click', () => {
       popup.classList.add('active');
-      console.log('Button clicked');
     });
-  } else {
-    console.error('Элемент .buttom не найден');
-  }
+  } 
 
-  if (closePopup) {
-    closePopup.addEventListener('click', () => {
-      console.log('Button закрыть');
-      popup.classList.remove('active');
-    });
-  }
-
-  // Закрытие попапа при клике вне его контента
   popup.addEventListener('click', (event) => {
-    if (event.target === popup) {
-      popup.classList.remove('active');
-    }
+    popup.classList.remove('active');
   });
 });
+
 document.addEventListener('DOMContentLoaded', () => {
   const projectNameElements = document.querySelectorAll('.project_name'); // Названия проекта
   const locationElement = document.querySelector('.popup h2:nth-of-type(1)'); // Локация
   const areaElement = document.querySelector('.popup h2:nth-of-type(2)'); // Площадь
   const processElement = document.querySelector('.popup h2:nth-of-type(3)'); // Стадия
   const sliderImg = document.querySelector('.slider_img'); // Слайдер изображений
+  const description =document.getElementById('description');
 
-  let images = [];
   let currentIndex = 0;
+  let projectData = {}; // Ссылка на проект
 
-  // Загружаем данные из JSON
-  fetch('/public/data/projectData.json')
-    .then(response => response.json())
-    .then(data => {
-      const project = data.projects[0]; // Берем только первый проект
-
-      // Обновляем данные на странице
-      projectNameElements.forEach(el => el.textContent = project.name); // Название проекта
-      locationElement.textContent = `Location: ${project.location}`;
-      areaElement.textContent = `Area: ${project.area}`;
-      processElement.textContent = `Process: ${project.process}`;
-
-      // Устанавливаем изображения для слайдера
-      images = project.images;
-      if (images.length > 0) {
-        sliderImg.src = images[currentIndex]; // Первое изображение
-      }
-    })
-    .catch(error => console.error('Error loading project data:', error));
-
-  // Функция для обновления изображения
-  const updateImage = () => {
-    sliderImg.style.opacity = '0'; // Скрываем изображение
-    setTimeout(() => {
-      sliderImg.src = images[currentIndex]; // Меняем изображение
-      sliderImg.style.opacity = '1'; // Показываем изображение
-    }, 300); // Длительность совпадает с CSS transition
+  // Функция для смены изображения в слайдере
+  const updateSliderImage = () => {
+    if (projectData.images && projectData.images.length > 0) {
+      sliderImg.src = projectData.images[currentIndex]; // Установка изображения
+    }
   };
 
-  // Навигация по изображениям
-  sliderImg.addEventListener('click', (event) => {
-    const { offsetX, target } = event;
-    const middle = target.clientWidth / 2;
-
-    if (offsetX < middle) {
-      // Клик слева — предыдущее изображение
-      currentIndex = (currentIndex - 1 + images.length) % images.length;
-    } else {
-      // Клик справа — следующее изображение
-      currentIndex = (currentIndex + 1) % images.length;
+  // Навигация по изображениям по клику на слайдер
+  sliderImg.addEventListener('click', () => {
+    if (projectData.images && projectData.images.length > 0) {
+      currentIndex = (currentIndex + 1) % projectData.images.length; // Переход к следующему изображению
+      updateSliderImage(); // Обновляем слайдер
     }
-    updateImage();
   });
+
+  // Обработчик для загрузки данных из JSON
+  const fetchData = async () => {
+    try {
+      const response = await fetch('/public/data/projectData.json');
+      const data = await response.json(); // Загружаем данные проекта
+
+      // Получаем конкретный проект из загруженных данных
+      const projectSlug = window.location.pathname.split('/').pop(); // Получаем слаг из URL
+      projectData = data.projects.find(p => p.slug === projectSlug); // Ищем наш проект
+      
+      if (projectData) {
+        // Обновляем данные на странице
+        projectNameElements.forEach(el => el.textContent = projectData.name); // Название проекта
+        locationElement.textContent = `Location: ${projectData.location}`;
+        areaElement.textContent = `Area: ${projectData.area}`;
+        processElement.textContent = `Process: ${projectData.process}`;
+        const formattedDescription = projectData.description.split('\n').map(paragraph => `<p>${paragraph}</p>`).join('');
+        description.innerHTML = formattedDescription;
+
+        // Устанавливаем изображения
+        if (projectData.images && projectData.images.length > 0) {
+          currentIndex = 0; // Сбрасываем индекс
+          updateSliderImage(); // Устанавливаем первое изображение
+        } else {
+          console.error('Нет изображений для проекта');
+        }
+      } else {
+        console.error('Проект не найден');
+      }
+
+    } catch (error) {
+      console.error('Ошибка загрузки данных проекта:', error);
+    }
+  };
+
+  fetchData(); // Стартуем загрузку данных
 });

@@ -10,19 +10,22 @@
     </style>
 </head>
 <body>
-    <div id="loader">Загрузка...</div>
+    <div id="loader">
+        <lottie-player src="/public/data/load_logo.json" id="loaderAnimation"></lottie-player>
+    </div>
+    </div>
     <header class="page-header">
-            <a class="AppHeader-logo" href="#" data-hotkey="g d" aria-label="Homepage" data-turbo="false">
+            <a class="AppHeader-logo" href="/" data-hotkey="g d" aria-label="Homepage" data-turbo="false">
                 <object type="image/svg+xml" data="/public/src/logo.svg" class="logo-svg"></object>
             </a>
         <nav>
           <div class="page-header-inner">
             <a href="" class="toggle-menu" role="button" aria-controls="menu-wrapper" aria-label="Open navigation" aria-expanded="false">
-              <lottie-player src="/public/src/icons_menu.json"></lottie-player>
+              <lottie-player  id="menuToggleAnimation" src="/public/src/icons_menu.json"></lottie-player>
             </a>
           </div>
           <div id="menu-wrapper" class="menu-wrapper">
-              <a href="/project">Projects</a>
+              <a href="/gallery">Projects</a>
               <a href="/studio">Studio</a>
               <a href="/contacts">Contacts</a>
           </div>
@@ -31,7 +34,9 @@
 <div class="main_container">
     <div class="content_container" >
         <div class="column">
-            <div class="img_container"></div>
+            <div class="img_container">
+                <img src="/public/src/0012/000_Александр.jpg" alt="">
+            </div>
             <h1>Alexander Trofimov</h1>
             <h2>Founder</h2>
         </div>
@@ -41,9 +46,23 @@
     </div>
     <div class="content_container" >
         <div class="column">
-            <div class="img_container"></div>
+            <div class="img_container">
+                <img src="/public/src/0012/000_Сергей.jpg" alt="">
+            </div>
             <h1>Sergei Zakharov</h1>
             <h2>Architect</h2>
+        </div>
+        <div class="column">
+            <h2>Описание команды, где и как была основана, краткий спектр работ, два-три достижения</h2>
+        </div>
+    </div>
+    <div class="content_container" >
+        <div class="column">
+            <div class="img_container">
+                <img src="/public/src/0012/00_Общая.jpg" alt="">
+            </div>
+            <!-- <h1>Sergei Zakharov</h1>
+            <h2>Architect</h2> -->
         </div>
         <div class="column">
             <h2>Описание команды, где и как была основана, краткий спектр работ, два-три достижения</h2>
@@ -52,45 +71,59 @@
     <div class="content_container">
         <div class="cards_container">
             <div class="card">
-                <div class="image"></div>
-                <h1>Name Surname</h1>
-                <h2>Occupation</h2>
+                <div class="image">
+                    <img src="/public/src/0012/002_Екатерина.jpg" alt="">
+                </div>
+                <h1>Ekaterina Zueva</h1>
+                <h2>Architect</h2>
             </div>
             <div class="card">
-                <div class="image"></div>
-                <h1>Name Surname</h1>
-                <h2>Occupation</h2>
+                <div class="image">
+                    <img src="/public/src/0012/003_Хасан.jpg" alt="">
+                </div>
+                <h1>Khasan Khaydarov</h1>
+                <h2>Architect</h2>
             </div>
             <div class="card">
-                <div class="image"></div>
-                <h1>Name Surname</h1>
-                <h2>Occupation</h2>
+                <div class="image">
+                    <img src="/public/src/0012/004_Олег.jpg" alt="">
+                </div>
+                <h1>Oleg Gorodov</h1>
+                <h2>Architect</h2>
             </div>
             <div class="card">
-                <div class="image"></div>
-                <h1>Name Surname</h1>
-                <h2>Occupation</h2>
+                <div class="image">
+                    <img src="/public/src/0012/005_Ася.jpg" alt="">
+                </div>
+                <h1>Anastasia Kovaleva</h1>
+                <h2>Architect</h2>
             </div>
             <div class="card">
-                <div class="image"></div>
-                <h1>Name Surname</h1>
-                <h2>Occupation</h2>
+                <div class="image">
+                    <img src="/public/src/0012/006_Андраник.jpg" alt="">
+                </div>
+                <h1>Andranik Mikhitarov</h1>
+                <h2>Architect</h2>
             </div>
             <div class="card">
-                <div class="image"></div>
-                <h1>Name Surname</h1>
-                <h2>Occupation</h2>
+                <div class="image">
+                    <img src="/public/src/0012/007_Анастасия.jpg" alt="">
+                </div>
+                <h1>Anastasiya Kirao</h1>
+                <h2>Office manager</h2>
             </div>
             <div class="card">
+                <div class="image">
+                    <img src="/public/src/0012/008_Варвара.jpg" alt="">
+                </div>
+                <h1>Varvara Zhukova</h1>
+                <h2>Architect</h2>
+            </div>
+            <!-- <div class="card">
                 <div class="image"></div>
                 <h1>Name Surname</h1>
                 <h2>Occupation</h2>
-            </div>
-            <div class="card">
-                <div class="image"></div>
-                <h1>Name Surname</h1>
-                <h2>Occupation</h2>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
@@ -99,10 +132,4 @@
 <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
 <script src="/public/scripts/script.js"></script>
 </body>
-<footer>
-    <div class="footer_info">
-        <h2>breatec@yandex.ru</h2>
-        <h2>+7 985 890 90 23 </h2>
-    </div>
-</footer>
 </html>

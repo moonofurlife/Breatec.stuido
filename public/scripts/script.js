@@ -1,12 +1,18 @@
-window.addEventListener('load', () => {
-            document.getElementById('loader').classList.add('hidden');
-            document.getElementById('content').style.display = 'block';
-        });
+document.addEventListener('DOMContentLoaded', () => {
+  const loaderAnimation = document.getElementById('loaderAnimation');
+
+  // Запускаем анимацию загрузки
+  loaderAnimation.play();
+  
+  // Прячем loader после завершения анимации
+  loaderAnimation.addEventListener('complete', () => {
+      document.getElementById('loader').style.display = 'none';
+  });
 const pageHeader = document.querySelector(".page-header");
 const toggleMenu = document.querySelector(".toggle-menu");
 const player = document.querySelector("lottie-player");
 const menuWrapper = document.querySelector(".menu-wrapper");
-const mainContainer = document.querySelector(".content_container");
+const mainContainer = document.querySelector(".main_container");
 const menuOpenedClass = "menu-open";
 const breakpoint = window.matchMedia("(max-width: 1079px)");
 
@@ -29,7 +35,7 @@ function toggleMenuHandler(e) {
       toggleMenu.setAttribute("aria-label", "Close navigation");
       toggleMenu.setAttribute("aria-expanded", "true");
       player.getLottie().playSegments([0, 14], true);
-      mainContainer.style.transform = "translateY(150px)"; // Опускаем вниз (пример)
+      mainContainer.style.transform = "translateY(200px)"; // Опускаем вниз (пример)
     }
   } else {
     // Если ширина экрана больше 1080px
@@ -51,3 +57,4 @@ function toggleMenuHandler(e) {
 
 // Добавляем обработчик события
 toggleMenu.addEventListener("click", toggleMenuHandler);
+});
