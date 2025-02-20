@@ -185,7 +185,6 @@ body {
 
 .image {
     pointer-events: none;
-    height: 220px;
 }
 
 .image img {
@@ -243,9 +242,6 @@ footer{
     
     .card {
         width: 44.2%;
-    }
-    .image {
-        height: 220px;
     }
     
 }

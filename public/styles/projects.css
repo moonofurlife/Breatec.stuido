@@ -132,14 +132,16 @@ body {
     left: 36px;
     top: 38px;
     width: 100%;
-    max-width: 183px;
+    max-width: 150px;
     height: 60px;
     z-index: 99999;
+    cursor: pointer;
 }
 
 .logo-svg {
     width: 100%;
     height: auto;
+    pointer-events: none;
 }
 
 /* MAIN CONTAINER */
@@ -226,6 +228,7 @@ body {
 
 .popup_header {
     margin-top: 28px;
+    margin-bottom: 28px;
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -246,6 +249,11 @@ body {
 
 #description{
     text-align: left;
+}
+
+#description p {
+    font-size: 20px;
+    font-weight: 300;
 }
 
 .popup-content h2:nth-child(1) {
