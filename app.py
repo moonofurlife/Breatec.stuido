@@ -27,9 +27,9 @@ def studio():
     return render_template('studio.html')
 
 
-@application.route('/pr_g')
-def progect_galery():
-    return render_template('progect_galery.html')
+@application.route('/studio/Aleksandr')
+def studio_employee():
+    return render_template('employee.html')
 
 
 # Страница "Contacts"

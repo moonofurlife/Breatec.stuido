@@ -42,12 +42,10 @@
             <div class="text_block">
                 <li id="projectName" class="project_name">{{ project.name }}</li>
                 <h1 class="buttom">More info</h1>
+                <h1>EN/RU</h1>
             </div>
             <div class="popup">
                 <div class="popup-content">
-                    <div class="popup_header">
-                        <li class="project_name">{{ project.name }}</li>
-                    </div>
                     <h2 id="projectLocation">Location: {{ project.location }}</h2>
                     <hr width="100%" size="1" color="black" noshade>
                     <h2 id="projectArea">Area: {{ project.area }}</h2>
@@ -57,6 +55,10 @@
                     <h2 id="Client">Client: {{ project.client }}</h2>
                     <hr width="100%" size="1" color="black" noshade>
                     <h2 id="description">{{ project.description }}</h2>
+                    <div class="popup_footer">
+                        <h1 class="project_name">{{ project.name }}</h1>
+                        <h1>EN/RU</h1>
+                    </div>
                 </div>
             </div>
         </div>
