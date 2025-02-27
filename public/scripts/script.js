@@ -58,3 +58,19 @@ function toggleMenuHandler(e) {
 // Добавляем обработчик события
 toggleMenu.addEventListener("click", toggleMenuHandler);
 });
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const button = document.getElementById('buttom');
+  const popup = document.querySelector('.popup');
+
+  if (button) {
+    button.addEventListener('click', () => {
+      popup.classList.add('active');
+    });
+  } 
+
+  popup.addEventListener('click', (event) => {
+    popup.classList.remove('active');
+  });
+});

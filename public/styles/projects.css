@@ -132,14 +132,16 @@ body {
     left: 36px;
     top: 38px;
     width: 100%;
-    max-width: 183px;
+    max-width: 150px;
     height: 60px;
     z-index: 99999;
+    cursor: pointer;
 }
 
 .logo-svg {
     width: 100%;
     height: auto;
+    pointer-events: none;
 }
 
 /* MAIN CONTAINER */
@@ -182,14 +184,14 @@ body {
 
 .project_name {
     font-weight: 400;
-    font-size: 25px;
+    font-size: 20px;
     list-style-type: none;
 }
 
 
 .buttom {
     font-weight: 400;
-    font-size: 25px;
+    font-size: 20px;
     cursor: pointer;
 }
 
@@ -197,7 +199,11 @@ body {
     text-underline-offset: 3px;
     text-decoration: underline 1px solid black;
 }
-
+.text_block h1{
+    font-weight: 400;
+    font-size: 20px;
+    cursor: pointer;
+}
 /* POPUP */
 .popup {
     opacity: 0;
@@ -221,31 +227,35 @@ body {
     padding: 0 36px;
     background-color: white;
     margin: 0 auto;
-    overflow-y: auto;
 }
 
-.popup_header {
-    margin-top: 28px;
-    display: flex;
+.popup_footer {
+    margin-top: auto;
     width: 100%;
+    display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-}
+    margin-bottom: 50px;
 
-.popup-content li {
+}
+.popup_footer h1{
+    font-size: 20px;
     font-weight: 400;
-    font-size: 30px;
-    list-style-type: none;
 }
 
 .popup-content h2 {
     font-size: 20px;
     font-weight: 300;
-    margin-bottom: 35px;
+    margin-top: 17.5px;
+    margin-bottom: 17.5px;
 }
 
 #description{
     text-align: left;
+}
+
+#description p {
+    font-size: 20px;
+    font-weight: 300;
 }
 
 .popup-content h2:nth-child(1) {

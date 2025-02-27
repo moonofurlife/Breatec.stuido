@@ -174,11 +174,11 @@ body {
     font-family: "Inter", serif;
     font-weight:400;
     text-decoration: none;
-    color: #6488FF;
+    color: black;
 }
 .text_block a:hover{
     text-underline-offset: 3px;
-    text-decoration: underline 1px solid #6488FF;
+    text-decoration: underline 1px solid black;
 }
 .arrow-svg{
     width:15.25px;

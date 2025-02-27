@@ -3,20 +3,32 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - dev
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install dependencies
-        run: npm install
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'  # Укажите нужную версию Python
 
-      - name: Build app
-        run: python app.py
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Generate static site
+        run: |
+          python app.py  # Сгенерируйте статические файлы
 
       - name: Deploy to GitHub Pages
-        run: npm run deploy
+        uses: peaceiris/action-gh-pages@v3.10.0  # Используйте последнюю стабильную версию
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public  # Путь к директории, которую вы хотите опубликовать

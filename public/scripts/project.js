@@ -83,6 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const areaElement = document.querySelector('.popup h2:nth-of-type(2)'); // Площадь
   const processElement = document.querySelector('.popup h2:nth-of-type(3)'); // Стадия
   const sliderImg = document.querySelector('.slider_img'); // Слайдер изображений
+  const client = document.getElementById("Client");
   const description =document.getElementById('description');
 
   let currentIndex = 0;
@@ -119,6 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
         locationElement.textContent = `Location: ${projectData.location}`;
         areaElement.textContent = `Area: ${projectData.area}`;
         processElement.textContent = `Process: ${projectData.process}`;
+        client.textContent = `Client: ${projectData.client}`;
         const formattedDescription = projectData.description.split('\n').map(paragraph => `<p>${paragraph}</p>`).join('');
         description.innerHTML = formattedDescription;
 
