@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Добавить новый проект</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Добавить новый проект</h1>
+        <a href="/admin" class="btn btn-primary mb-3">Назад к панели администратора</a>
+        
+        <form method="POST" action="/admin/add_project" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="name">Название проекта:</label>
+                <input type="text" id="name" class="form-control" name="name" placeholder="Введите название проекта" required>
+            </div>
+            <div class="form-group">
+                <label for="slug">Слаг проекта:</label>
+                <input type="text" id="slug" class="form-control" name="slug" placeholder="Введите слаг проекта" required>
+            </div>
+
+            <h3>Данные на английском</h3>
+            <div class="form-group">
+                <label for="location_en">Расположение (EN):</label>
+                <input type="text" id="location_en" class="form-control" name="location_en" placeholder="Введите расположение" required>
+            </div>
+            <div class="form-group">
+                <label for="area_en">Площадь (кв. м) (EN):</label>
+                <input type="number" step="0.01" id="area_en" class="form-control" name="area_en" placeholder="Введите площадь" required>
+            </div>
+            <div class="form-group">
+                <label for="process_en">Процесс (EN):</label>
+                <input type="text" id="process_en" class="form-control" name="process_en" placeholder="Введите процесс">
+            </div>
+            <div class="form-group">
+                <label for="client_en">Клиент (EN):</label>
+                <input type="text" id="client_en" class="form-control" name="client_en" placeholder="Введите имя клиента" required>
+            </div>
+            <div class="form-group">
+                <label for="description_en">Описание проекта (EN):</label>
+                <textarea id="description_en" class="form-control" name="description_en" placeholder="Введите описание проекта" rows="4" required></textarea>
+            </div>
+
+            <h3>Данные на русском</h3>
+            <div class="form-group">
+                <label for="location_ru">Расположение (RU):</label>
+                <input type="text" id="location_ru" class="form-control" name="location_ru" placeholder="Введите расположение" required>
+            </div>
+            <div class="form-group">
+                <label for="process_ru">Процесс (RU):</label>
+                <input type="text" id="process_ru" class="form-control" name="process_ru" placeholder="Введите процесс">
+            </div>
+            <div class="form-group">
+                <label for="client_ru">Клиент (RU):</label>
+                <input type="text" id="client_ru" class="form-control" name="client_ru" placeholder="Введите имя клиента" required>
+            </div>
+            <div class="form-group">
+                <label for="description_ru">Описание проекта (RU):</label>
+                <textarea id="description_ru" class="form-control" name="description_ru" placeholder="Введите описание проекта" rows="4" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="images">Загрузить изображения:</label>
+                <input type="file" id="images" class="form-control-file" name="images" multiple accept="image/*">
+                <small class="form-text text-muted">Вы можете загрузить несколько изображений.</small>
+            </div>
+            <button type="submit" class="btn btn-success">Добавить проект</button>
+        </form>
+    </div>
+</body>
+</html>

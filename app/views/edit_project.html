@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактировать проект: {{ project.name }}</title>
+</head>
+<body>
+    <h1>Редактировать проект: {{ project.name }}</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="text" name="name" value="{{ project.name }}" required>
+        <input type="text" name="slug" value="{{ project.slug }}" required placeholder="Slug">
+        <input type="text" name="location_en" value="{{ project.location_en }}" required placeholder="Локация en">
+        <input type="text" name="area_en" value="{{ project.area_en }}" required placeholder="Площадь en">
+        <input type="text" name="process_en" value="{{ project.process_en }}" required placeholder="Процесс en">
+        <input type="text" name="client_en" value="{{ project.client_en }}" required placeholder="Клиент en">
+        <textarea name="description_en" required>{{ project.description_en }}</textarea>
+        <input type="text" name="location_ru" value="{{ project.location_ru }}" required placeholder="Локация ru">
+        <input type="text" name="area_ru" value="{{ project.area_ru }}" required placeholder="Площадь ru">
+        <input type="text" name="process_ru" value="{{ project.process_ru }}" required placeholder="Процесс ru">
+        <input type="text" name="client_ru" value="{{ project.client_ru }}" required placeholder="Клиент ru">
+        <textarea name="description_ru" required>{{ project.description_ru }}</textarea>
+
+        <h3>Загрузить новые изображения</h3>
+        <input type="file" name="new_images" multiple>
+
+        <h3>Существующие изображения</h3>
+        <div>
+            {% for image in existing_images %}
+                <div>
+                    <img src="{{ url_for('static', filename='uploads/' + project.name + '/' + image) }}" alt="Image" style="width: 100px; height: auto;">
+                    <span>{{ image }}</span>  <!-- Отображение имени изображения -->
+                    <input type="checkbox" name="delete_images" value="{{ image }}"> Удалить
+                </div>
+            {% endfor %}
+        </div>
+
+        <button type="submit">Сохранить изменения</button>
+    </form>
+    <a href="{{ url_for('main.admin_dashboard') }}">Вернуться к списку проектов</a>
+</body>
+</html>

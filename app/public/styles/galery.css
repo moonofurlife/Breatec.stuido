@@ -1,0 +1,449 @@
+* {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 38px;
+    margin-left: 36px;
+    margin-right: 36px;
+}
+
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+#loaderAnimation{
+    width: 15%;
+}
+
+
+/* HEADER BLOCK */
+.page-header {
+    position: fixed;
+    background-color: white;
+    height: 122px;
+    width: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 99;
+}
+
+.page-header nav {
+    position: fixed;
+    top: 50px;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.page-header .page-header-inner {
+    display: flex;
+    align-items: center;
+}
+
+.page-header .page-header-inner * {
+    z-index: 1;
+}
+
+.page-header .toggle-menu {
+    position: fixed;
+    top: 41.75px;
+    right: 36px;
+    cursor: pointer;
+}
+
+.page-header lottie-player {
+    display: flex;
+    height: 32px;
+}
+
+.menu_links {
+    position: fixed;
+    top: 73px;
+    right: 181.5px;
+}
+
+.side_menu {
+    position: fixed;
+    top: 80px;
+    width: 60px;
+    height: 60px;
+    right: 90px;
+    cursor: pointer;
+}
+
+.menu-wrapper a {
+    font-family: "Inter", serif;
+    font-weight: 400;
+    font-size: 38.85px;
+    text-decoration: none;
+    color: black;
+}
+
+.menu-wrapper a:hover {
+    text-underline-offset: 3px;
+    text-decoration: underline 1px solid black;
+}
+
+.page-header .menu-wrapper {
+    transform: translateX(800px);
+    transition: transform 1s ease-in-out;
+}
+
+.page-header.menu-open .menu-wrapper {
+    transform: none;
+}
+
+.page-header .menu-wrapper a {
+    display: inline-block;
+}
+
+@media (max-width: 900px) {
+    .page-header .menu-wrapper {
+        position: fixed;
+        width: 100%;
+        height: 150px;
+        right: 36px;
+        top: 118.36px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        overflow-y: auto;
+    }
+}
+
+/** LOGO BLOCK **/
+.AppHeader-logo {
+    position: fixed;
+    left: 36px;
+    top: 38px;
+    width: 100%;
+    max-width: 150px;
+    height: 60px;
+    z-index: 99999;
+    cursor: pointer;
+}
+
+.logo-svg {
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+}
+
+.content_container {
+    transition: transform 1s ease-in-out;
+}
+
+.cards_container {
+    margin-top: 106px;
+    display: flex;
+    justify-content: flex-start;
+    width: inherit;
+    gap: 30px;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+
+.card {
+    width: 100%;
+    cursor: pointer;
+}
+
+.card h1 {
+    margin: 10px 0 0 0;
+    font-family: inter;
+    opacity: 1;
+    font-size: 22px;
+    font-weight: 400;
+    width: 100%;
+    text-underline-offset: 3px;
+    text-decoration: underline 1px solid black;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    transition: opacity 0.5s ease;
+}
+
+.image {
+    pointer-events: none;
+}
+
+.image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card:hover h1 {
+    opacity: 1;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+/* FOOTER BLOCK */
+footer{
+    position: relative;
+}
+.footer_info {
+    width: 88vw;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding-top: 20px;
+    padding-bottom: 38px;
+    justify-content: space-between;
+}
+
+.footer_info h2 {
+    cursor: pointer;
+    margin: 0;
+    font-family: inter;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24.2px;
+}
+
+.footer_info h2:nth-child(1) {
+    margin-right: 50px;
+}
+
+.footer_info h2:hover {
+    text-decoration: underline 1px solid black;
+}
+
+/* Медиа-запросы для адаптивности */
+/* планшет */
+@media (min-width:600px) {
+    .cards_container {
+        gap: 20px 11.4%;
+    }
+    
+    .card {
+        width: 44.2%;
+    }
+    
+}
+@media (min-width: 1080px) and (max-width: 1169px) {
+    body {
+        margin-top: 70px;
+        margin-left: 90px;
+        margin-right: 90px;
+    }
+
+    /* HEADER BLOCK */
+    .page-header {
+        padding: 70px 20px 0;
+    }
+
+    .page-header .toggle-menu {
+        top: 70px;
+        right: 90px;
+    }
+
+    .page-header .menu-wrapper:not(:last-child) {
+        margin-right: 50px;
+    }
+
+    .menu-wrapper a {
+        font-size: 50px;
+    }
+
+    .page-header .menu-wrapper a:not(:last-child) {
+        margin: 0 10px;
+    }
+
+    .menu-wrapper a:is(:last-child) {
+        padding-right: 170px;
+        padding-left: 10px;
+    }
+
+    /** LOGO BLOCK **/
+    .AppHeader-logo {
+        left: 90px;
+        top: 70px;
+    }
+
+    /* MAIN CONTAINER */
+    .cards_container {
+        margin-top: 153px;
+        gap: 20px;
+    }
+
+    .cards_container{
+        margin-top: 153px;
+        gap: 50px 6.6%;
+    }
+
+    .card {
+        width: 28.8%;
+    }
+    .image {
+        height: inherit;
+        aspect-ratio: 1/1;
+    }
+
+    .card h1 {
+        opacity: 0;
+        width: 100%;
+    }
+
+    /* FOOTER BLOCK */
+    .footer_info {
+        padding-top: 50px;
+        padding-bottom: 70px;
+    }
+
+}
+
+/* ноутбук  */
+@media (min-width:1170px) and (max-width: 1350px) {
+    body {
+        margin-top: 70px;
+        margin-left: 90px;
+        margin-right: 90px;
+    }
+
+    /* HEADER BLOCK */
+    .page-header {
+        padding: 70px 20px 0;
+    }
+
+    .page-header .toggle-menu {
+        top: 70px;
+        right: 90px;
+    }
+
+    .page-header .menu-wrapper:not(:last-child) {
+        margin-right: 50px;
+    }
+
+    .menu-wrapper a:nth-child(3) {
+        padding-right: 200px;
+        padding-left: 25px;
+    }
+
+    .page-header .menu-wrapper a:not(:last-child) {
+        margin: 0 25px 20px;
+    }
+
+    .menu-wrapper a {
+        font-size: 50px;
+    }
+
+    /** LOGO BLOCK **/
+    .AppHeader-logo {
+        left: 90px;
+        top: 70px;
+    }
+
+    /* MAIN CONTAINER */
+    .cards_container {
+        margin-top: 153px;
+        gap: 50px 6.06%;
+        margin-bottom: 50px;
+    }
+
+    .card {
+        width: 29.2%;
+    }
+
+    .image{
+        height: inherit;
+        aspect-ratio: 1/1;
+    }
+
+    .card h1 {
+        opacity: 0;
+        width: 100%;
+    }
+}
+
+/* большие экраны */
+@media (min-width: 1351px) {
+    body {
+        margin-top: 70px;
+        margin-left: 90px;
+        margin-right: 90px;
+    }
+
+    /* HEADER BLOCK */
+    .page-header {
+        padding: 70px 20px 0;
+        height: 70px;
+    }
+
+    .page-header .toggle-menu {
+        top: 70px;
+        right: 90px;
+    }
+
+    .page-header .menu-wrapper:not(:last-child) {
+        margin-right: 50px;
+    }
+
+    .page-header .menu-wrapper a:not(:last-child) {
+        margin: 0 25px 20px;
+    }
+
+    .menu-wrapper a:nth-child(3) {
+        padding-right: 200px;
+        padding-left: 25px;
+    }
+
+    .menu-wrapper a {
+        font-size: 50px;
+    }
+
+    .page-header .menu-wrapper {
+        transform: translateX(820px);
+        transition: transform 1s ease-in-out;
+    }
+
+    /** LOGO BLOCK **/
+    .AppHeader-logo {
+        left: 90px;
+        top: 70px;
+    }
+
+    /* MAIN CONTAINER */
+    .cards_container {
+        gap: 25px 4.76%;
+        margin-bottom: 50px;
+    }
+
+    .card {
+        width: 21.4%;
+    }
+    .image{
+        height: inherit;
+        aspect-ratio: 1/1;
+    }
+
+    .card h1 {
+        opacity: 0;
+        width: 100%;
+    }
+}
