@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вертикальные слайды</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .slides-container {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100vh; /* Высота вьюпорта */
+        }
+        .slide {
+            min-width: 100vw; /* Каждый слайд занимает 100% ширины */
+            height: 100vh; /* Каждый слайд занимает 100% высоты */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+            color: white;
+        }
+        .slide1 {
+            background-color: #3498db; /* Цвет для первого слайда */
+        }
+        .slide2 {
+            background-color: #e74c3c; /* Цвет для второго слайда */
+        }
+    </style>
+</head>
+<body>
+    <header class="page-header">
+        <a class="AppHeader-logo" href="/" data-hotkey="g d" aria-label="Homepage" data-turbo="false">
+            <object type="image/svg+xml" data="/public/src/logo.svg" class="logo-svg"></object>
+        </a>
+    <nav>
+      <div class="page-header-inner">
+        <a href="" class="toggle-menu" role="button" aria-controls="menu-wrapper" aria-label="Open navigation" aria-expanded="false">
+          <lottie-player  id="menuToggleAnimation" src="/public/src/icons_menu.json"></lottie-player>
+        </a>
+      </div>
+      <div id="menu-wrapper" class="menu-wrapper">
+          <a href="/gallery">Projects</a>
+          <a href="/studio">Studio</a>
+          <a href="/contacts">Contacts</a>
+      </div>
+    </nav>
+  </header>
+    <div class="slides-wrapper">
+        <div class="slide slide1">Слайд 1</div>
+        <div class="slide slide2">Слайд 2</div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const totalSlides = 2;
+        const slidesContainer = document.querySelector('.slides-container');
+
+        // Переключение слайдов по нажатию клавиш
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowDown' && currentSlide < totalSlides - 1) {
+                currentSlide++;
+                slidesContainer.style.transform = `translateY(-${currentSlide * 100}vh)`;
+            } else if (event.key === 'ArrowUp' && currentSlide > 0) {
+                currentSlide--;
+                slidesContainer.style.transform = `translateY(-${currentSlide * 100}vh)`;
+            }
+        });
+    </script>
+</body>
+</html>

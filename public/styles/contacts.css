@@ -61,7 +61,6 @@ body {
 .page-header .toggle-menu {
     position: fixed;
     top: 41.75px;
-    width: 53px;
     height: 31.49px;
     right: 36px;
     cursor: pointer;
@@ -193,7 +192,35 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: right;
+    object-position: left;
+}
+/* FOOTER BLOCK */
+footer {
+    margin-top: auto; 
+}
+.footer_info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap:10px;
+    flex-wrap: wrap;
+    padding-top: 20px;
+    height: 50px;
+}
+.footer_info h1{
+    cursor: pointer;
+    margin: 0;
+    font-family: inter;
+    font-size: 16px;
+    font-weight: 400;
+}
+.footer_info h1:nth-child(1){
+    margin-right: 50px;
+}
+
+.footer_info h1 a:hover{
+    text-underline-offset: 3px;
+    text-decoration: underline 1px solid black;
 }
 
 /* Медиа-запросы для адаптивности */
@@ -210,6 +237,7 @@ body {
         margin-top: 70px;
         margin-left: 90px;
         margin-right: 90px;
+        overflow: hidden;
     }
     /* HEADER BLOCK */
     .page-header{
@@ -253,7 +281,7 @@ body {
         width: 100%;
     }
     .arrow-svg{
-        width:22px;
+        width:20px;
         height: auto;
     }
     hr{
@@ -273,6 +301,7 @@ body {
         margin-top: 70px;
         margin-left: 90px;
         margin-right: 90px;
+        overflow: hidden;
     }
     /* HEADER BLOCK */
     .page-header{
@@ -318,7 +347,7 @@ body {
         height: 1px;
     }
     .arrow-svg{
-        width:22px;
+        width:20px;
         height: auto;
     }
     .img_container {
@@ -336,11 +365,9 @@ body {
         margin-top: 70px;
         margin-left: 90px;
         margin-right: 90px;
+        overflow: hidden;
     }
     /* HEADER BLOCK */
-    .page-header{
-        /* padding: 70px 20px 0; */
-    }
     .page-header .toggle-menu {
         top: 70px;
         right: 90px;
@@ -382,7 +409,7 @@ body {
         height: 1px;
     }
     .arrow-svg{
-        width:22px;
+        width:20px;
         height: auto;
     }
     .img_container {

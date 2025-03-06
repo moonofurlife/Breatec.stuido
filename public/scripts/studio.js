@@ -1,0 +1,108 @@
+document.addEventListener('DOMContentLoaded', () => {
+  const loaderAnimation = document.getElementById('loaderAnimation');
+
+  // Запускаем анимацию загрузки
+  loaderAnimation.play();
+  
+  // Прячем loader после завершения анимации
+  loaderAnimation.addEventListener('complete', () => {
+      document.getElementById('loader').style.display = 'none';
+  });
+  const swiper = new Swiper('.swiper-container', {
+    direction: 'vertical', // Вертикальная ориентация
+
+    // spaceBetween: 100,
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+});
+
+// Переключение слайдов при прокрутке колесом мыши
+swiper.on('wheel', function(event) {
+    if (event.deltaY > 0) {
+        swiper.slideNext(); // Прокрутка вниз
+    } else {
+        swiper.slidePrev(); // Прокрутка вверх
+    }
+    event.preventDefault();
+});
+
+// Переключение слайдов с помощью стрелок на клавиатуре
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'ArrowDown') {
+        swiper.slideNext(); // Нажата клавиша стрелки вниз
+    } else if (event.key === 'ArrowUp') {
+        swiper.slidePrev(); // Нажата клавиша стрелки вверх
+    }
+});
+const pageHeader = document.querySelector(".page-header");
+const toggleMenu = document.querySelector(".toggle-menu");
+const player = document.querySelector("lottie-player");
+const menuWrapper = document.querySelector(".menu-wrapper");
+// const mainContainer = document.querySelector(".swiper-wrapper");
+const menuOpenedClass = "menu-open";
+const breakpoint = window.matchMedia("(max-width: 1079px)");
+
+// Функция для обработки открытия меню
+function toggleMenuHandler(e) {
+  e.preventDefault();
+
+  // Если ширина экрана меньше 1080px
+  if (breakpoint.matches) {
+    if (pageHeader.classList.contains(menuOpenedClass)) {
+      // Закрытие меню
+      pageHeader.classList.remove(menuOpenedClass);
+      toggleMenu.setAttribute("aria-label", "Open navigation");
+      toggleMenu.setAttribute("aria-expanded", "false");
+      player.getLottie().playSegments([14, 28], true);
+      // mainContainer.style.transform = "translateY(0)"; 
+    } else {
+      // Открытие меню
+      pageHeader.classList.add(menuOpenedClass);
+      toggleMenu.setAttribute("aria-label", "Close navigation");
+      toggleMenu.setAttribute("aria-expanded", "true");
+      player.getLottie().playSegments([0, 14], true);
+      // mainContainer.style.transform = "translateY(200px)"; // Опускаем вниз (пример)
+    }
+  } else {
+    // Если ширина экрана больше 1080px
+    if (pageHeader.classList.contains(menuOpenedClass)) {
+      // Закрытие меню
+      pageHeader.classList.remove(menuOpenedClass);
+      toggleMenu.setAttribute("aria-label", "Open navigation");
+      toggleMenu.setAttribute("aria-expanded", "false");
+      player.getLottie().playSegments([14, 28], true);
+    } else {
+      // Открытие меню
+      pageHeader.classList.add(menuOpenedClass);
+      toggleMenu.setAttribute("aria-label", "Close navigation");
+      toggleMenu.setAttribute("aria-expanded", "true");
+      player.getLottie().playSegments([0, 14], true);
+    }
+  }
+}
+
+// Добавляем обработчик события
+toggleMenu.addEventListener("click", toggleMenuHandler);
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const button = document.getElementById('buttom');
+  const popup = document.querySelector('.popup');
+
+  if (button) {
+    button.addEventListener('click', () => {
+      popup.classList.add('active');
+    });
+  } 
+
+  popup.addEventListener('click', (event) => {
+    popup.classList.remove('active');
+  });
+});
