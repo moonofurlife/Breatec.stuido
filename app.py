@@ -13,7 +13,8 @@ logging.basicConfig(level=logging.ERROR)
 
 # Загрузка данных о проектах из JSON файла
 def load_projects():
-    with open('public/data/projectData.json', 'r', encoding='utf-8') as file:
+    file_path = os.path.join(application.static_folder, 'data', 'projectData.json')
+    with open(file_path, 'r', encoding='utf-8') as file:
         return json.load(file)
 
 # Главная страница

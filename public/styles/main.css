@@ -135,7 +135,8 @@ footer {
 .footer_info h2:nth-child(1){
     margin-right: 50px;
 }
-.footer_info h2:hover{
+
+.footer_info h1 a:hover{
     text-underline-offset: 3px;
     text-decoration: underline 1px solid black;
 }

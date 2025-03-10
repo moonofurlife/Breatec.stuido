@@ -8,69 +8,51 @@ document.addEventListener('DOMContentLoaded', () => {
   loaderAnimation.addEventListener('complete', () => {
       document.getElementById('loader').style.display = 'none';
   });
-const pageHeader = document.querySelector(".page-header");
-const toggleMenu = document.querySelector(".toggle-menu");
-const player = document.querySelector("lottie-player");
-const menuWrapper = document.querySelector(".menu-wrapper");
-const mainContainer = document.querySelector(".main_container");
-const menuOpenedClass = "menu-open";
-const breakpoint = window.matchMedia("(max-width: 1079px)");
 
-// Функция для обработки открытия меню
-function toggleMenuHandler(e) {
-  e.preventDefault();
+  const pageHeader = document.querySelector(".page-header");
+  const toggleMenu = document.querySelector(".toggle-menu");
+  const toggleAnimationPlayer = document.querySelector("#menuToggleAnimation");
+  const menuOpenedClass = "menu-open";
+  const menuOpenedClassPhone = "menu-open-phone";
+  const breakpoint = window.matchMedia("(max-width: 500px)");
 
-  // Если ширина экрана меньше 1080px
-  if (breakpoint.matches) {
-    if (pageHeader.classList.contains(menuOpenedClass)) {
-      // Закрытие меню
-      pageHeader.classList.remove(menuOpenedClass);
-      toggleMenu.setAttribute("aria-label", "Open navigation");
-      toggleMenu.setAttribute("aria-expanded", "false");
-      player.getLottie().playSegments([14, 28], true);
-      mainContainer.style.transform = "translateY(0)"; 
+  function toggleMenuHandler(e) {
+    e.preventDefault();
+    
+    if (breakpoint.matches) {
+        if (pageHeader.classList.contains(menuOpenedClassPhone)) {
+            // Если меню открыто, закрываем
+            pageHeader.classList.add('menu-closing');
+            setTimeout(function() {
+                pageHeader.classList.remove(menuOpenedClassPhone);
+                pageHeader.classList.remove('menu-closing');
+            }, 1000);
+            toggleMenu.setAttribute("aria-label", "Open navigation");
+            toggleMenu.setAttribute("aria-expanded", "false");
+            toggleAnimationPlayer.getLottie().playSegments([14, 28], true); // Воспроизвести сегмент для "закрытия"
+        } else {
+            // Если меню закрыто, открываем
+            pageHeader.classList.add(menuOpenedClassPhone);
+            toggleMenu.setAttribute("aria-label", "Close navigation");
+            toggleMenu.setAttribute("aria-expanded", "true");
+            toggleAnimationPlayer.getLottie().playSegments([0, 14], true); // Воспроизвести сегмент для "открытия"
+        }
     } else {
-      // Открытие меню
-      pageHeader.classList.add(menuOpenedClass);
-      toggleMenu.setAttribute("aria-label", "Close navigation");
-      toggleMenu.setAttribute("aria-expanded", "true");
-      player.getLottie().playSegments([0, 14], true);
-      mainContainer.style.transform = "translateY(200px)"; // Опускаем вниз (пример)
+        // Аналогично для десктопа
+        if (pageHeader.classList.contains(menuOpenedClass)) {
+            pageHeader.classList.remove(menuOpenedClass);
+            toggleMenu.setAttribute("aria-label", "Open navigation");
+            toggleMenu.setAttribute("aria-expanded", "false");
+            toggleAnimationPlayer.getLottie().playSegments([14, 28], true);
+        } else {
+            pageHeader.classList.add(menuOpenedClass);
+            toggleMenu.setAttribute("aria-label", "Close navigation");
+            toggleMenu.setAttribute("aria-expanded", "true");
+            toggleAnimationPlayer.getLottie().playSegments([0, 14], true);
+        }
     }
-  } else {
-    // Если ширина экрана больше 1080px
-    if (pageHeader.classList.contains(menuOpenedClass)) {
-      // Закрытие меню
-      pageHeader.classList.remove(menuOpenedClass);
-      toggleMenu.setAttribute("aria-label", "Open navigation");
-      toggleMenu.setAttribute("aria-expanded", "false");
-      player.getLottie().playSegments([14, 28], true);
-    } else {
-      // Открытие меню
-      pageHeader.classList.add(menuOpenedClass);
-      toggleMenu.setAttribute("aria-label", "Close navigation");
-      toggleMenu.setAttribute("aria-expanded", "true");
-      player.getLottie().playSegments([0, 14], true);
-    }
-  }
 }
 
 // Добавляем обработчик события
 toggleMenu.addEventListener("click", toggleMenuHandler);
-});
-
-
-document.addEventListener('DOMContentLoaded', () => {
-  const button = document.getElementById('buttom');
-  const popup = document.querySelector('.popup');
-
-  if (button) {
-    button.addEventListener('click', () => {
-      popup.classList.add('active');
-    });
-  } 
-
-  popup.addEventListener('click', (event) => {
-    popup.classList.remove('active');
-  });
 });

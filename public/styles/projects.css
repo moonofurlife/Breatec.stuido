@@ -101,24 +101,39 @@ body {
 
 .page-header .menu-wrapper {
     transform: translateX(100vw);
-    transition: transform 1s ease-in-out;
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out; 
+    background-color: transparent;
+    opacity: 0; /* По умолчанию невидимо */
 }
 
 .page-header.menu-open .menu-wrapper {
     transform: none;
+    opacity: 1; 
+}
+
+.page-header.menu-open-phone .menu-wrapper {
+    transform: none; 
+    background-color: white; 
+    height: 100vh; 
+    opacity: 1; 
+}
+
+.page-header.menu-closing .menu-wrapper {
+    transform: translateX(100vw); 
+    opacity: 0;
 }
 
 .page-header .menu-wrapper a {
     display: inline-block;
 }
 
-@media (max-width: 1079px) {
+@media (max-width: 500px) {
     .page-header .menu-wrapper {
         position: fixed;
         width: 100%;
-        height: 150px;
+        height: 100vh; 
         right: 36px;
-        top: 118.36px;
+        top: 100px;
         display: flex;
         flex-direction: column;
         align-items: flex-end;
@@ -281,6 +296,18 @@ body {
     transform: none;
     margin-top: 0;
 }
+.footer_info {
+    display: none;
+}
+.footer_info a{
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.footer_info a:hover{
+    text-underline-offset: 3px;
+    text-decoration: underline 1px solid black;
+}
 
 /* Медиа-запросы для адаптивности */
 /* планшет */
@@ -422,10 +449,10 @@ body {
         font-size: 35px;
         line-height: 42.34px;
     }
-/* 
-    .close-popup {
-        height: 41.36px;
-    } */
+
+    .footer_info {
+        display: block;
+    }
 }
 
 /* большие экраны */
@@ -490,5 +517,9 @@ body {
 
     .close-popup {
         height: 41.36px;
+    }
+    
+    .footer_info {
+        display: block;
     }
 }

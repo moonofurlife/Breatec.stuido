@@ -105,30 +105,38 @@ body::-webkit-scrollbar-thumb {
 
 .page-header .menu-wrapper {
     transform: translateX(100vw);
-    transition: transform 1s ease-in-out, opacity 1s ease-in-out; 
-    background-color:transparent;
+    transition: transform 1s ease-in-out, opacity 2s ease-in-out; 
+    background-color: transparent;
+    opacity: 0; /* По умолчанию невидимо */
 }
 
 .page-header.menu-open .menu-wrapper {
+    opacity: 1; 
     transform: none; 
 }
-.page-header.menu-open_phone .menu-wrapper {
+
+.page-header.menu-open-phone .menu-wrapper {
     transform: none; 
     background-color: white; 
     height: 100vh; 
     opacity: 1; 
-    transition: transform 1s ease-in-out, opacity 1s ease-in-out; 
 }
+
+.page-header.menu-closing .menu-wrapper {
+    transform: translateX(100vw); 
+    opacity: 0;
+}
+
 .page-header .menu-wrapper a {
     display: inline-block;
 }
-@media (max-width: 1080px) {
+@media (max-width: 500px) {
     .page-header .menu-wrapper {
         position: fixed;
         width: 100%;
         height: 100vh; 
         right: 36px;
-        top: 118.36px;
+        top: 100px;
         display: flex;
         flex-direction: column;
         align-items: flex-end;
@@ -165,18 +173,22 @@ body::-webkit-scrollbar-thumb {
     scrollbar-width: none;
 }
 
-.swiper-slide{
-    margin-top: 30%;
+.swiper-wrapper{
+    flex-direction: column;
+}
+.swiper-slide {
     display: flex;
     width: 100%;
-    height: 100vh;
+    height: fit-content;
     flex-direction:column;
     align-items: center;
     gap:30px;
     overflow: hidden;
     padding: 0; 
 }
-
+.column:first-child{
+    margin-top: 122px; 
+}
 .swiper-slide:last-child{
     flex-direction: column;
 }
@@ -192,8 +204,8 @@ body::-webkit-scrollbar-thumb {
     justify-content: center;
 }
 
-.column:first-child{
-    /* margin-top: 70px;  */
+.swiper-slide:last-child{
+    margin-top: 80px;
 }
 
 .column .img_container{
@@ -258,44 +270,50 @@ body::-webkit-scrollbar-thumb {
 /* POPUP */
 .popup {
     opacity: 0;
-    position: fixed;
-    bottom: -150%;
+    position: absolute; 
     left: 0;
-    height: 90vh;
+    flex-direction: column;
+    max-height: 88vh;
     width: 100%;
     background-color: white;
     text-align: center;
-    z-index: 1000;
-    transition: bottom 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    z-index: -1; 
+    transition: opacity 0.3s ease-in-out;
     cursor: url("/public/src/cursor.svg"), auto;
+    overflow-y: auto;
 }
 
+.popup::-webkit-scrollbar {
+    width: 0; 
+}
+.popup::-webkit-scrollbar-thumb {
+    background: transparent; 
+}
+
+.no-scroll {
+    overflow: hidden;
+}
 .popup-content {
     display: flex;
+    flex: 1;
+    flex-direction: column;
     align-items: center;
     justify-content: space-between;
     height: inherit;
-    padding: 0 90px;
     background-color: white;
-    margin: 0 auto;
 }
 .popup_column{
-    width: 33.19vw;
+    width: 100%;
     height: fit-content;
     text-align: left;
 }
 .popup_column img{
     width: 100%;
-    height: 100%;
     aspect-ratio: 1/1;
 }
-.popup_column:last-child{
-    width: 50%;
-    text-align: left;
-    align-items: center;
-}
+
 .popup_footer {
-    margin-top: auto;
+    margin-top: 20px;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -313,9 +331,11 @@ body::-webkit-scrollbar-thumb {
     font-weight: 600;
     margin: 14px 0;
 }
-.popup_footer h1{
-    font-size: 20px;
-    font-weight: 400;
+
+.popup_footer h1 a:hover{
+    cursor: pointer;
+    text-underline-offset: 3px;
+    text-decoration: underline 1px solid black;
 }
 
 .popup-content h2 {
@@ -350,7 +370,7 @@ body::-webkit-scrollbar-thumb {
 
 .popup.active {
     opacity: 1;
-    bottom: 0;
+    z-index: 1000;
 }
 
 .swiper-slide.menu-open .popup {
@@ -363,6 +383,7 @@ body::-webkit-scrollbar-thumb {
     flex-direction: column;
 }
 footer {
+    display: none;
     margin-top: auto; 
     height: 50px;
     width: 100%;
@@ -383,7 +404,7 @@ footer {
 .footer_info h2:nth-child(1){
     margin-right: 50px;
 }
-.footer_info h2:hover{
+.footer_info h1 a:hover{
     text-underline-offset: 3px;
     text-decoration: underline 1px solid black;
 }
@@ -422,15 +443,18 @@ footer {
         left: 60px;
         top: 70px;
     }
+
     /* MAIN CONTAINER */
     .swiper-container {
         width: 100%;
     }
+
     .swiper-slide {
         margin: 0;
     }
 
     .swiper-slide:first-child{
+        height: 100vh;
         flex-direction: row;
         gap: 10.625%;
         justify-content: center;
@@ -440,6 +464,7 @@ footer {
     }
 
     .column{
+        margin-top: 122px;
         width: 26.25%;
     }
 
@@ -447,6 +472,7 @@ footer {
         width: 100%;
         aspect-ratio: 1/1;
     }
+
     .cards_container{
         margin-top: 100px;
         gap: 12px 10.625%;
@@ -455,9 +481,33 @@ footer {
     .card {
         width: 26.25%;
     }
+
     .image {
         height: inherit;
         aspect-ratio: 1/1;
+    }
+
+    .popup{
+        display: flex;
+        height: 90vh;
+    }
+
+    .popup-content {
+        flex-direction: row;
+    }
+
+    .popup_column{
+        width: 33.19vw;
+    }
+
+    .popup_column:last-child{
+        width: 50%;
+        text-align: left;
+        align-items: center;
+    }
+
+    .popup_column img{
+        height: 100%;
     }
 
 }
@@ -500,12 +550,14 @@ footer {
     }
     
     .swiper-slide:first-child{
+        height: 100vh;
         flex-direction: row;
         gap: 17.69%;
         justify-content: center;
     }
 
     .column{
+        margin-top: 122px;
         width: 21.54%;
     }
 
@@ -527,6 +579,34 @@ footer {
         height: inherit;
         aspect-ratio: 1/1;
     }
+
+    .popup{
+        display: flex;
+        height: 90vh;
+    }
+
+    .popup-content {
+        flex-direction: row;
+    }
+
+    .popup_column{
+        width: 33.19vw;
+    }
+
+    .popup_column:last-child{
+        width: 50%;
+        text-align: left;
+        align-items: center;
+    }
+
+    .popup_column img{
+        height: 100%;
+    }
+
+    footer{
+        display: block;
+    }
+
     
 }
 /* большие экраны */
@@ -557,10 +637,6 @@ footer {
     .menu-wrapper a{ 
         font-size: 50px;   
     }
-    .page-header .menu-wrapper {
-        transform: translateX(100vw);
-        transition: transform 1s ease-in-out;
-    }
     /** LOGO BLOCK **/
     .AppHeader-logo {
         left: 90px;
@@ -576,12 +652,14 @@ footer {
         margin: 0;
     }
     .swiper-slide:first-child{
+        height: 100vh;
         flex-direction: row;
         gap: 6.666%;
         justify-content: center;
     }
 
     .column{
+        margin-top: 122px;
         width: 20%;
     }
 
@@ -598,6 +676,33 @@ footer {
     .image{
         height: inherit;
         aspect-ratio: 1/1;
+    }
+
+    .popup{
+        display: flex;
+        height: 90vh;
+    }
+
+    .popup-content {
+        flex-direction: row;
+    }
+
+    .popup_column{
+        width: 33.19vw;
+    }
+
+    .popup_column:last-child{
+        width: 50%;
+        text-align: left;
+        align-items: center;
+    }
+
+    .popup_column img{
+        height: 100%;
+    }
+
+    footer{
+        display: block;
     }
 
 }

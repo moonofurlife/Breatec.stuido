@@ -105,25 +105,40 @@ body {
 }
 
 .page-header .menu-wrapper {
-    transform: translateX(800px);
-    transition: transform 1s ease-in-out;
+    transform: translateX(100vw);
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out; 
+    background-color: transparent;
+    opacity: 0; /* По умолчанию невидимо */
 }
 
 .page-header.menu-open .menu-wrapper {
     transform: none;
+    opacity: 1; 
+}
+
+.page-header.menu-open-phone .menu-wrapper {
+    transform: none; 
+    background-color: white; 
+    height: 100vh; 
+    opacity: 1; 
+}
+
+.page-header.menu-closing .menu-wrapper {
+    transform: translateX(100vw); 
+    opacity: 0;
 }
 
 .page-header .menu-wrapper a {
     display: inline-block;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 500px) {
     .page-header .menu-wrapper {
         position: fixed;
         width: 100%;
-        height: 150px;
+        height: 100vh; 
         right: 36px;
-        top: 118.36px;
+        top: 100px;
         display: flex;
         flex-direction: column;
         align-items: flex-end;
@@ -205,6 +220,7 @@ a {
 
 /* FOOTER BLOCK */
 footer {
+    display: none;
     margin-top: auto; 
 }
 .footer_info{
@@ -227,7 +243,8 @@ footer {
 .footer_info h2:nth-child(1){
     margin-right: 50px;
 }
-.footer_info h2:hover{
+
+.footer_info h1 a:hover{
     text-underline-offset: 3px;
     text-decoration: underline 1px solid black;
 }
@@ -376,6 +393,9 @@ footer {
         opacity: 0;
         width: 100%;
     }
+    footer{
+        display: block;
+    }
 }
 
 /* большие экраны */
@@ -414,11 +434,6 @@ footer {
         font-size: 50px;
     }
 
-    .page-header .menu-wrapper {
-        transform: translateX(820px);
-        transition: transform 1s ease-in-out;
-    }
-
     /** LOGO BLOCK **/
     .AppHeader-logo {
         left: 90px;
@@ -441,5 +456,8 @@ footer {
     .card h1 {
         opacity: 0;
         width: 100%;
+    }
+    footer{
+        display: block;
     }
 }

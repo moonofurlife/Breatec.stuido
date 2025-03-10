@@ -24,7 +24,7 @@
             <div class="page-header-inner">
                 <a href="" class="toggle-menu" role="button" aria-controls="menu-wrapper" aria-label="Open navigation"
                     aria-expanded="false">
-                    <lottie-player src="/public/src/icons_menu.json"></lottie-player>
+                    <lottie-player id="menuToggleAnimation" src="/public/src/icons_menu.json"></lottie-player>
                 </a>
             </div>
             <div id="menu-wrapper" class="menu-wrapper">
@@ -42,7 +42,7 @@
             <div class="text_block">
                 <li id="projectName" class="project_name">{{ project.name }}</li>
                 <h1 class="buttom">More info</h1>
-                <h1>EN/RU</h1>
+                <h1 class="footer_info"><a>EN</a>/<a>RU</a></h1>
             </div>
             <div class="popup">
                 <div class="popup-content">
@@ -57,7 +57,7 @@
                     <h2 id="description">{{ project.description }}</h2>
                     <div class="popup_footer">
                         <h1 class="project_name">{{ project.name }}</h1>
-                        <h1>EN/RU</h1>
+                        <h1 class="'footer_info"><a>EN</a>/<a>RU</a></h1>
                     </div>
                 </div>
             </div>
