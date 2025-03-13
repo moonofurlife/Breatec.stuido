@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const toggleAnimationPlayer = document.querySelector("#menuToggleAnimation");
   const menuOpenedClass = "menu-open";
   const menuOpenedClassPhone = "menu-open-phone";
-  const breakpoint = window.matchMedia("(max-width: 500px)");
+  const breakpoint = window.matchMedia("(max-width: 1079px)");
 
   function toggleMenuHandler(e) {
     e.preventDefault();

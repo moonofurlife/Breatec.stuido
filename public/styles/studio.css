@@ -20,10 +20,10 @@ body {
 }
 
 body::-webkit-scrollbar {
-    width: 0; /* Скрываем вертикальную полосу прокрутки */
+    width: 0; 
 } 
 body::-webkit-scrollbar-thumb {
-    background: transparent; /* Скрываем ползунок полосы прокрутки */
+    background: transparent; 
 }
 #loader {
     position: fixed;
@@ -54,7 +54,7 @@ body::-webkit-scrollbar-thumb {
 }
 .page-header nav {
     position: fixed;
-    top: 50px;
+    top: 30px;
     right: 0;
     display: flex;
     align-items: center;
@@ -130,7 +130,7 @@ body::-webkit-scrollbar-thumb {
 .page-header .menu-wrapper a {
     display: inline-block;
 }
-@media (max-width: 500px) {
+@media (max-width: 1079px) {
     .page-header .menu-wrapper {
         position: fixed;
         width: 100%;
@@ -141,7 +141,7 @@ body::-webkit-scrollbar-thumb {
         flex-direction: column;
         align-items: flex-end;
         overflow-y: auto;
-    }   
+    }  
 }
 
 /** LOGO BLOCK **/
@@ -273,7 +273,7 @@ body::-webkit-scrollbar-thumb {
     position: absolute; 
     left: 0;
     flex-direction: column;
-    max-height: 88vh;
+    max-height: calc(100vh - 122px); 
     width: 100%;
     background-color: white;
     text-align: center;
@@ -295,12 +295,13 @@ body::-webkit-scrollbar-thumb {
 }
 .popup-content {
     display: flex;
-    flex: 1;
+    height: calc(100% - 96px);
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     height: inherit;
     background-color: white;
+    margin-bottom: 50px;
 }
 .popup_column{
     width: 100%;
@@ -309,16 +310,21 @@ body::-webkit-scrollbar-thumb {
 }
 .popup_column img{
     width: 100%;
-    aspect-ratio: 1/1;
+    aspect-ratio: 1 / 1;
 }
 
 .popup_footer {
-    margin-top: 20px;
-    width: 100%;
-    display: flex;
+    display: none;
     justify-content: space-between;
-    margin-bottom: 50px;
+    align-items: center;
+    gap:10px;
+    flex-wrap: wrap;
+    margin-top: 1px;
+    height: 96px;
+}
 
+.popup_footer object{
+    height: 14px;
 }
 .popup_column h1{
     font-size: 20px;
@@ -383,23 +389,24 @@ body::-webkit-scrollbar-thumb {
     flex-direction: column;
 }
 footer {
-    display: none;
-    margin-top: auto; 
     height: 50px;
     width: 100%;
 }
 .footer_info{
-    display: flex;
+    display: none;
     justify-content: space-between;
+    align-items: center;
+    gap:10px;
     flex-wrap: wrap;
+    margin-top: 56px;
+    height: 96px;
 }
-.footer_info h2{
+.footer_info h1{
     cursor: pointer;
     margin: 0;
     font-family: inter;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 400;
-    line-height: 24.2px;
 }
 .footer_info h2:nth-child(1){
     margin-right: 50px;
@@ -411,13 +418,23 @@ footer {
 
 /* Медиа-запросы для адаптивности */
 /* планшет */
+@media (max-height:600px){
+    .page-header.menu-open .menu-wrapper {
+        transform: translateX(-100px);
+    }
+    .menu-wrapper a {
+        margin: 0 20px;
+    }
+}
 @media (min-width: 1080px) and (max-width: 1169px) {
     body {
         margin-left: 60px;
         margin-right: 60px;
-        margin-bottom: 0;
     }
     /* HEADER BLOCK */
+    .page-header nav {
+        top: 50.5px;
+    }
     .page-header{
         background-color:white;
     }
@@ -464,19 +481,21 @@ footer {
     }
 
     .column{
-        margin-top: 122px;
         width: 26.25%;
     }
-
+    .column:first-child{
+        margin: 0;
+    }
     .column .img_container{
         width: 100%;
         aspect-ratio: 1/1;
     }
 
     .cards_container{
-        margin-top: 100px;
+        margin-top: 122px;
+        height: calc(100% - 122px);
         gap: 12px 10.625%;
-    }
+    } 
 
     .card {
         width: 26.25%;
@@ -489,25 +508,42 @@ footer {
 
     .popup{
         display: flex;
-        height: 90vh;
+        height: calc(100vh - 122px);
+        margin-top: 122px;
     }
 
     .popup-content {
         flex-direction: row;
+        margin-bottom: 0;
+        height: calc(100% - 96px);
     }
 
     .popup_column{
         width: 33.19vw;
+        width: 38%;
+        height: inherit;
     }
 
     .popup_column:last-child{
         width: 50%;
         text-align: left;
         align-items: center;
+        height: fit-content;
     }
 
     .popup_column img{
         height: 100%;
+        object-fit: contain;
+        object-position: left;
+    }
+
+    .popup_footer {
+        display: flex;
+    }
+
+    .footer_info{
+        display: flex;
+        height: 96px;
     }
 
 }
@@ -516,9 +552,15 @@ footer {
     body {
         margin-left: 90px;
         margin-right: 90px;
-        margin-bottom: 0;
     }
     /* HEADER BLOCK */
+    .page-header nav {
+        top: 50.5px;
+    }
+    .page-header {
+        height: 122px; /*тут поменяля*/
+    }
+
     .page-header .toggle-menu {
         top: 70px;
         right: 90px;
@@ -557,8 +599,11 @@ footer {
     }
 
     .column{
-        margin-top: 122px;
+
         width: 21.54%;
+    }
+    .column:first-child{
+        margin: 0;
     }
 
     .column .img_container{
@@ -567,7 +612,8 @@ footer {
     }  
 
     .cards_container {
-        margin-top: 100px;
+        margin-top: 122px;
+        height: calc(100% - 122px);
         gap: 12px 17.69%;
     }
 
@@ -582,30 +628,43 @@ footer {
 
     .popup{
         display: flex;
-        height: 90vh;
+        height: calc(100vh - 122px);
+        margin-top: 122px;
     }
 
     .popup-content {
         flex-direction: row;
+        margin-bottom: 0;
+        height: calc(100% - 96px);
     }
 
     .popup_column{
-        width: 33.19vw;
+        width: 38%;
+        height: inherit;
     }
 
     .popup_column:last-child{
         width: 50%;
         text-align: left;
         align-items: center;
+        height: fit-content;
     }
 
     .popup_column img{
         height: 100%;
+        object-fit: contain;
+        object-position: left;
     }
 
-    footer{
-        display: block;
+    .popup_footer {
+        display: flex;
     }
+
+    .footer_info{
+        display: flex;
+        height: 96px;
+    }
+
 
     
 }
@@ -614,10 +673,12 @@ footer {
     body {
         margin-left: 90px;
         margin-right: 90px;
-        margin-bottom: 0;
     }
     /* HEADER BLOCK */
-    .page-header{
+    .page-header nav {
+        top: 50.5px;
+    }
+    .page-header {
         height: 122px;
     }
     .page-header .toggle-menu {
@@ -659,12 +720,15 @@ footer {
     }
 
     .column{
-        margin-top: 122px;
         width: 20%;
+    }
+    .column:first-child{
+        margin: 0;
     }
 
     .cards_container{
-        margin-top: 100px;
+        margin-top: 122px;
+        height: calc(100% - 122px);
         gap: 20px 6.666%;
     }
 
@@ -680,29 +744,41 @@ footer {
 
     .popup{
         display: flex;
-        height: 90vh;
+        height: calc(100vh - 122px);
+        margin-top: 122px;
     }
 
     .popup-content {
         flex-direction: row;
+        margin-bottom: 0;
+        height: calc(100% - 96px);
     }
 
     .popup_column{
-        width: 33.19vw;
+        width: 38%;
+        height: inherit;
     }
 
     .popup_column:last-child{
         width: 50%;
         text-align: left;
         align-items: center;
+        height: fit-content;
     }
 
     .popup_column img{
         height: 100%;
+        object-fit: contain;
+        object-position: left;
     }
 
-    footer{
-        display: block;
+    .popup_footer {
+        display: flex;
+    }
+
+    .footer_info{
+        display: flex;
+        height: 96px;
     }
 
 }

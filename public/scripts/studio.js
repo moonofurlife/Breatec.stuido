@@ -13,12 +13,12 @@ document.addEventListener('DOMContentLoaded', () => {
   function initSwiper() {
       const swiperContainer = document.querySelector('.swiper-container');
 
-      if (swiperContainer && window.innerWidth > 768) { // Инициализация только для десктопов
+      if (swiperContainer && window.innerWidth > 1079) { // Инициализация только для десктопов
           const swiper = new Swiper(swiperContainer, {
               direction: 'vertical', // Вертикальная ориентация
               simulateTouch: true, 
               autoHeight: true,
-              spaceBetween: 100,
+            //   spaceBetween: 100,
               pagination: {
                   el: '.swiper-pagination',
                   clickable: true,
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const toggleAnimationPlayer = document.querySelector("#menuToggleAnimation");
   const menuOpenedClass = "menu-open";
   const menuOpenedClassPhone = "menu-open-phone";
-  const breakpoint = window.matchMedia("(max-width: 500px)");
+  const breakpoint = window.matchMedia("(max-width: 1079px)");
 
   function toggleMenuHandler(e) {
     e.preventDefault();
@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         popup.style.top = `${buttonRect.top + scrollTop}px`
                       }
                       else {
-                        popup.style.top = `130px`
+                        popup.style.top = ``
                       }
                       document.body.classList.add('no-scroll');
                   })

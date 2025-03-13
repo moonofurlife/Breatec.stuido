@@ -17,7 +17,7 @@
     </div>
     </div>
     <header class="page-header">
-        <a class="AppHeader-logo" href="#" data-hotkey="g d" aria-label="Homepage" data-turbo="false">
+        <a class="AppHeader-logo" href="/" data-hotkey="g d" aria-label="Homepage" data-turbo="false">
             <object type="image/svg+xml" data="/public/src/logo.svg" class="logo-svg"></object>
         </a>
         <nav>
@@ -39,11 +39,6 @@
             <div class="img_container">
                 <img src="{{ project.image_url }}" alt="{{ project.name }}" class="slider_img">
             </div>
-            <div class="text_block">
-                <li id="projectName" class="project_name">{{ project.name }}</li>
-                <h1 class="buttom">More info</h1>
-                <h1 class="footer_info"><a>EN</a>/<a>RU</a></h1>
-            </div>
             <div class="popup">
                 <div class="popup-content">
                     <h2 id="projectLocation">Location: {{ project.location }}</h2>
@@ -57,11 +52,18 @@
                     <h2 id="description">{{ project.description }}</h2>
                     <div class="popup_footer">
                         <h1 class="project_name">{{ project.name }}</h1>
-                        <h1 class="'footer_info"><a>EN</a>/<a>RU</a></h1>
+                        <h1><a>EN</a>/<a>RU</a></h1>
                     </div>
                 </div>
             </div>
         </div>
+        <footer>
+            <div class="footer_info">
+                <h1 id="projectName" class="project_name">{{ project.name }}</h1>
+                <h1 class="buttom">More info</h1>
+                <h1><a>EN</a>/<a>RU</a></h1>
+            </div>
+        </footer>
     </div>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <script src="https://unpkg.com/@lottiefiles/lottie-interactivity@latest/dist/lottie-interactivity.min.js"></script>

@@ -39,7 +39,7 @@ def contacts():
     return render_template('contacts.html')
 
 # Страница "Gallery"
-@application.route('/gallery')  # Исправлено опечатка: 'galery' -> 'gallery'
+@application.route('/gallery')  
 def gallery():
     return render_template('galery.html')
 

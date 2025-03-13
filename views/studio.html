@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,51 +11,54 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
     </style>
 </head>
+
 <body>
     <div id="loader">
         <lottie-player src="/public/data/load_logo.json" id="loaderAnimation"></lottie-player>
     </div>
     </div>
     <header class="page-header">
-            <a class="AppHeader-logo" href="/" data-hotkey="g d" aria-label="Homepage" data-turbo="false">
-                <object type="image/svg+xml" data="/public/src/logo.svg" class="logo-svg"></object>
-            </a>
+        <a class="AppHeader-logo" href="/" data-hotkey="g d" aria-label="Homepage" data-turbo="false">
+            <object type="image/svg+xml" data="/public/src/logo.svg" class="logo-svg"></object>
+        </a>
         <nav>
-          <div class="page-header-inner">
-            <a href="" class="toggle-menu" role="button" aria-controls="menu-wrapper" aria-label="Open navigation" aria-expanded="false">
-              <lottie-player  id="menuToggleAnimation" src="/public/src/icons_menu.json"></lottie-player>
-            </a>
-          </div>
-          <div id="menu-wrapper" class="menu-wrapper">
-              <a href="/gallery">Projects</a>
-              <a href="/studio">Studio</a>
-              <a href="/contacts">Contacts</a>
-          </div>
+            <div class="page-header-inner">
+                <a href="" class="toggle-menu" role="button" aria-controls="menu-wrapper" aria-label="Open navigation"
+                    aria-expanded="false">
+                    <lottie-player id="menuToggleAnimation" src="/public/src/icons_menu.json"></lottie-player>
+                </a>
+            </div>
+            <div id="menu-wrapper" class="menu-wrapper">
+                <a href="/gallery">Projects</a>
+                <a href="/studio">Studio</a>
+                <a href="/contacts">Contacts</a>
+            </div>
         </nav>
-      </header>
-<div class="swiper-container">
-    <div class="swiper-wrapper">
-        <div class="swiper-slide" >
-            <div class="column button">
-                <div class="img_container">
-                    <img src="/public/src/0012/000_Alexsander.jpg" alt="">
+    </header>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="column button">
+                    <div class="img_container">
+                        <img src="/public/src/0012/000_Alexsander.jpg" alt="">
+                    </div>
+                    <h1>Aleksandr Trofimov</h1>
+                    <h2>Architect & Founder</h2>
                 </div>
-                <h1>Alexander Trofimov</h1>
-                <h2>Founder</h2>
-            </div>
-            <div class="column button">
-                <div class="img_container">
-                    <img src="/public/src/0012/000_Sergey.jpg" alt="">
+                <div class="column button">
+                    <div class="img_container">
+                        <img src="/public/src/0012/000_Sergey.jpg" alt="">
+                    </div>
+                    <h1>Sergei Zakharov</h1>
+                    <h2>Architect</h2>
                 </div>
-                <h1>Sergei Zakharov</h1>
-                <h2>Architect</h2>
             </div>
-            <!-- <div class="popup">
+            <div class="popup">
                 <div class="popup-content">
                     <div class="popup_column">
                         <img id="employee_image" src="/public/src/0012/000_Alexsander.jpg" alt="">
                         <h3 id="Name">Aleksandr Trofimov</h1>
-                        <h1 id="Occupation">Architect and Founder</h2>
+                            <h1 id="Occupation">Architect and Founder</h2>
                     </div>
                     <div class="popup_column">
                         <h1>Education:</h1>
@@ -63,40 +67,16 @@
                         <hr width="100%" size="1" color="black" noshade>
                         <h1>Work:</h1>
                         <div class="work">
-                            
+
                         </div>
                     </div>
                 </div>
                 <div class="popup_footer">
                     <object data="/public/src/studio.svg" type=""></object>
-                    <h1>EN/RU</h1>
-                </div>
-            </div> -->
-        </div>
-        <div class="popup">
-            <div class="popup-content">
-                <div class="popup_column">
-                    <img id="employee_image" src="/public/src/0012/000_Alexsander.jpg" alt="">
-                    <h3 id="Name">Aleksandr Trofimov</h1>
-                    <h1 id="Occupation">Architect and Founder</h2>
-                </div>
-                <div class="popup_column">
-                    <h1>Education:</h1>
-                    <h3 id="year_edu">2011 - 2017</h3>
-                    <h3 id="university">Moscow State University of Civil Engineering</h3>
-                    <hr width="100%" size="1" color="black" noshade>
-                    <h1>Work:</h1>
-                    <div class="work">
-                        
-                    </div>
+                    <h1><a>EN</a>/<a>RU</a></h1>
                 </div>
             </div>
-            <div class="popup_footer">
-                <object data="/public/src/studio.svg" type=""></object>
-                <h1><a>EN</a>/<a>RU</a></h1>
-            </div>
-        </div>
-        <div class="swiper-slide">
+            <div class="swiper-slide">
                 <div class="cards_container">
                     <div class="card">
                         <div class="image">
@@ -168,6 +148,13 @@
                         <h1>Darya Bykova</h1>
                         <h2>Architect</h2>
                     </div>
+                    <div class="card">
+                        <div class="image">
+                            <img src="/public/src/0012/Noname.jpg" alt="">
+                        </div>
+                        <h1>Anna Gorley</h1>
+                        <h2>Architect</h2>
+                    </div>
                     <footer>
                         <div class="footer_info">
                             <object data="/public/src/studio.svg" type="image/svg+xml"></object>
@@ -175,13 +162,14 @@
                         </div>
                     </footer>
                 </div>
+            </div>
         </div>
     </div>
-</div>
-<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-<script src="https://unpkg.com/@lottiefiles/lottie-interactivity@latest/dist/lottie-interactivity.min.js"></script>
-<script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-<script src="/public/scripts/studio.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-interactivity@latest/dist/lottie-interactivity.min.js"></script>
+    <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="/public/scripts/studio.js"></script>
 </body>
+
 </html>
