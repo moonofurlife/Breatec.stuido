@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const loaderAnimation = document.getElementById('loaderAnimation');
-  
+    
     // Запускаем анимацию загрузки
     loaderAnimation.play();
     

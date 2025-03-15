@@ -14,7 +14,7 @@
 <body>
     <header>
         <div id="loader">
-            <lottie-player src="/public/data/full_logo.json" id="loaderAnimation"></lottie-player>
+            <lottie-player src="/public/data/full_logo.json" Content-Type="xml" id="loaderAnimation"></lottie-player>
         </div>
         <a class="AppHeader-logo" href="#" data-hotkey="g d" aria-label="Homepage" data-turbo="false">
             <object type="image/svg+xml" data="/public/src/logo.svg" class="logo-svg"></object>
@@ -40,10 +40,12 @@
             <h1><a>EN</a>/<a>RU</a></h1>
         </div>
     </footer>
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    
+    <!-- <script src="https://unpkg.com/@lottiefiles/lottie-player@1.2.2/dist/lottie-player.js"></script>
     <script src="https://unpkg.com/@lottiefiles/lottie-interactivity@latest/dist/lottie-interactivity.min.js"></script>
-    <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
-    <script src="/public/scripts/main.js"></script>
+    <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script type="module" src="/public/scripts/main.js"></script>
 </body>
 
 </html>

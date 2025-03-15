@@ -329,13 +329,13 @@ body::-webkit-scrollbar-thumb {
 .popup_column h1{
     font-size: 20px;
     font-weight: 400;
-    margin: 14px 0;
+    margin: 5px 0;
 }
 
 .popup_column h3{
     font-size: 20px;
     font-weight: 600;
-    margin: 14px 0;
+    margin: 5px 0;
 }
 
 .popup_footer h1 a:hover{
@@ -344,11 +344,14 @@ body::-webkit-scrollbar-thumb {
     text-decoration: underline 1px solid black;
 }
 
-.popup-content h2 {
+.popup_column h1:first-of-type{
+    margin-bottom: 10px;
+}
+
+.work h2 {
     font-size: 20px;
-    font-weight: 300;
-    margin-top: 17.5px;
-    margin-bottom: 17.5px;
+    font-weight: 400;
+    margin: 5px 0;
 }
 
 #description{
@@ -398,7 +401,6 @@ footer {
     align-items: center;
     gap:10px;
     flex-wrap: wrap;
-    margin-top: 56px;
     height: 96px;
 }
 .footer_info h1{
@@ -434,6 +436,9 @@ footer {
     /* HEADER BLOCK */
     .page-header nav {
         top: 50.5px;
+    }
+    .page-header{
+        height: 150px;
     }
     .page-header{
         background-color:white;
@@ -477,7 +482,7 @@ footer {
         justify-content: center;
     }
     .swiper-slide:last-child{
-        margin-bottom: 20px;
+        margin-bottom: 0;
     }
 
     .column{
@@ -492,8 +497,8 @@ footer {
     }
 
     .cards_container{
-        margin-top: 122px;
-        height: calc(100% - 122px);
+        margin-top: 150px;
+        height: calc(100% - 150px);
         gap: 12px 10.625%;
     } 
 
@@ -508,8 +513,8 @@ footer {
 
     .popup{
         display: flex;
-        height: calc(100vh - 122px);
-        margin-top: 122px;
+        height: calc(100vh - 150px);
+        margin-top: 150px;
     }
 
     .popup-content {
@@ -558,7 +563,7 @@ footer {
         top: 50.5px;
     }
     .page-header {
-        height: 122px; /*тут поменяля*/
+        height: 150px;
     }
 
     .page-header .toggle-menu {
@@ -597,6 +602,9 @@ footer {
         gap: 17.69%;
         justify-content: center;
     }
+    .swiper-slide:last-child{
+        margin-bottom: 0;
+    }
 
     .column{
 
@@ -612,8 +620,8 @@ footer {
     }  
 
     .cards_container {
-        margin-top: 122px;
-        height: calc(100% - 122px);
+        margin-top: 150px;
+        height: calc(100% - 150px);
         gap: 12px 17.69%;
     }
 
@@ -628,8 +636,8 @@ footer {
 
     .popup{
         display: flex;
-        height: calc(100vh - 122px);
-        margin-top: 122px;
+        height: calc(100vh - 150px);
+        margin-top: 150px;
     }
 
     .popup-content {
@@ -679,7 +687,7 @@ footer {
         top: 50.5px;
     }
     .page-header {
-        height: 122px;
+        height: 150px;
     }
     .page-header .toggle-menu {
         top: 70px;
@@ -718,6 +726,9 @@ footer {
         gap: 6.666%;
         justify-content: center;
     }
+    .swiper-slide:last-child{
+        margin-bottom: 0;
+    }
 
     .column{
         width: 20%;
@@ -727,8 +738,8 @@ footer {
     }
 
     .cards_container{
-        margin-top: 122px;
-        height: calc(100% - 122px);
+        margin-top: 150px;
+        height: calc(100% - 150px);
         gap: 20px 6.666%;
     }
 
@@ -744,8 +755,8 @@ footer {
 
     .popup{
         display: flex;
-        height: calc(100vh - 122px);
-        margin-top: 122px;
+        height: calc(100vh - 150px);
+        margin-top: 150px;
     }
 
     .popup-content {
