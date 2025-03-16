@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить сотрудника</title>
+    <script>
+        function addEducation() {
+            const educationContainer = document.getElementById('education-container');
+            const newEducation = document.createElement('div');
+            newEducation.innerHTML = `
+                <h4>Образование</h4>
+                <div class="form-group">
+                    <label for="edu_ids">Порядковый номер образования:</label>
+                    <input type="text" name="edu_ids[]" required>
+                </div>
+                <div class="form-group">
+                    <label for="education_year">Год:</label>
+                    <input type="text" name="education_year[]" required>
+                </div>
+                <div class="form-group">
+                    <label for="education_university">Университет:</label>
+                    <input type="text" name="education_university[]" required>
+                </div>
+                <div class="form-group">
+                    <label for="education_university_ru">Университет (русский):</label>
+                    <input type="text" name="education_university_ru[]" required>
+                </div>
+                <button type="button" onclick="removeEducation(this)">Удалить образование</button>
+            `;
+            educationContainer.appendChild(newEducation);
+        }
+
+        function removeEducation(button) {
+            button.parentElement.remove();
+        }
+
+        function addWorkExperience() {
+            const workContainer = document.getElementById('work-container');
+            const newWork = document.createElement('div');
+            newWork.innerHTML = `
+                <h4>Опыт работы</h4>
+                <div class="form-group">
+                    <label for="work_ids">Порядковый номер работы:</label>
+                    <input type="text" name="work_ids[]" required>
+                </div>
+                <div class="form-group">
+                    <label for="work_year">Годы:</label>
+                    <input type="text" name="work_year[]" required>
+                </div>
+                <div class="form-group">
+                    <label for="work_place">Место работы:</label>
+                    <input type="text" name="work_place[]" required>
+                </div>
+                <div class="form-group">
+                    <label for="work_place_ru">Место работы (русский):</label>
+                    <input type="text" name="work_place_ru[]" required>
+                </div>
+                <div class="form-group">
+                    <label for="work_position">Должность:</label>
+                    <input type="text" name="work_position[]" required>
+                </div>
+                <div class="form-group">
+                    <label for="work_position_ru">Должность (русский):</label>
+                    <input type="text" name="work_position_ru[]" required>
+                </div>
+                <button type="button" onclick="removeWorkExperience(this)">Удалить опыт</button>
+            `;
+            workContainer.appendChild(newWork);
+        }
+
+        function removeWorkExperience(button) {
+            button.parentElement.remove();
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Добавить нового сотрудника</h1>
+        <form method="POST" action="/admin/add_person" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="name">Имя:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="name_ru">Имя (русский):</label>
+                <input type="text" id="name_ru" name="name_ru" required>
+            </div>
+            <div class="form-group">
+                <label for="occupation">Должность:</label>
+                <input type="text" id="occupation" name="occupation" required>
+            </div>
+            <div class="form-group">
+                <label for="occupation_ru">Должность (русский):</label>
+                <input type="text" id="occupation_ru" name="occupation_ru" required>
+            </div>
+            <div class="form-group">
+                <label for="image">Изображение:</label>
+                <input type="file" id="image" name="image" accept="image/*" required>
+            </div>
+            <div class="form-group">
+                <label for="person_id">Порядок сотрудников</label>
+                <input type="number" id="person_id" name="person_id" required>
+            </div>
+            <div class="form-group">
+                <label for="is_main">На главной странице:</label>
+                <input type="checkbox" id="is_main" name="is_main">
+            </div>
+            <h3>Образование (опционально)</h3>
+            <div id="education-container">
+            </div>
+            <button type="button" onclick="addEducation()">Добавить еще образование</button>
+            
+            <h3>Опыт работы (опционально)</h3>
+            <div id="work-container">
+            </div>
+            <button type="button" onclick="addWorkExperience()">Добавить еще опыт работы</button>
+            
+            <button type="submit" class="btn btn-success">Добавить сотрудника</button>
+        </form>
+    </div>
+    <style>
+        .container {
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background: #f9f9f9;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .flashes li {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        .flashes .error {
+            background-color: #f2dede;
+            color: #a94442;
+        }
+        .flashes .success {
+            background-color: #dff0d8;
+            color: #3c763d;
+        }
+    </style>
+</body>
+</html>

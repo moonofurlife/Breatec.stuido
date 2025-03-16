@@ -1,0 +1,49 @@
+[
+    {
+        "name": "Aleksandr Trofimov",
+        "occupation": "Architect & Founder",
+        "image": "/public/src/0012/000_Alexsander.jpg",
+        "education": {
+            "year": "2011 - 2017",
+            "university": "Moscow State University of Civil Engineering"
+        },
+        "workExperience": [
+            {
+                "year": "2016 - 2022",
+                "place": "Project bureau APEX",
+                "position": "Architect - Chief project architect"
+            },
+            {
+                "year": "2022 - ",
+                "place": "Breatec studio",
+                "position": "Architect & Founder"
+            }
+        ]
+    },
+    {
+        "name": "Sergei Zakharov",
+        "occupation": "Architect & Partner",
+        "image": "/public/src/0012/000_Sergey.jpg",
+        "education": {
+            "year": "2011 - 2017",
+            "university": "Moscow State University of Civil Engineering"
+        },
+        "workExperience": [
+            {
+                "year": "2016 - 2022",
+                "place": "Project bureau Arkest",
+                "position": "Architect"
+            },
+            {
+                "year": "2019 - 2023",
+                "place": "Architect bureau Syntaxis",
+                "position": "Architect - Chief project architect"
+            },
+            {
+                "year": "2023 - ",
+                "place": "Breatec studio",
+                "position": "Architect & Partner"
+            }
+        ]
+    }
+]

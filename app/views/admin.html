@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Админская страница</title>
+    <title>Вход в админку</title>
 </head>
 <body>
     <h1>Вход в админскую панель</h1>
@@ -15,4 +15,19 @@
         <p style="color: red;">{{ error }}</p>
     {% endif %}
 </body>
+<script>
+    let timeout;
+    
+    function resetTimer() {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+            window.location.href = "/logout";
+        }, 30 * 60 * 1000);
+    }
+
+    window.onload = resetTimer;
+    window.onmousemove = resetTimer;
+    window.onkeypress = resetTimer;
+    window.onscroll = resetTimer;
+</script>
 </html>
