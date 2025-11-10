@@ -10,7 +10,7 @@ login_manager = LoginManager()
 
 
 
-def create_app():
+def create_app(app):
     app = Flask(__name__, template_folder='views', static_folder='public')
     app.secret_key = 'breatec' 
     login_manager.init_app(app)
@@ -24,7 +24,7 @@ def create_app():
     migrate.init_app(app, db)
 
     with app.app_context():
-        from . import models
+        from .. import models
 
     from .routes import bp
     app.register_blueprint(bp)

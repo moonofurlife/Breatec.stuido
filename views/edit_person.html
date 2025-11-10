@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редактировать сотрудника</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Редактировать сотрудника</h1>
+
+        <form action="{{ url_for('main.edit_person', person_id=person.id) }}" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="name">Имя:</label>
+                <input type="text" id="name" name="name" value="{{ person.name }}" required>
+            </div>
+            <div class="form-group">
+                <label for="name">Имя RU:</label>
+                <input type="text" id="name_ru" name="name_ru" value="{{ person.name_ru }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="occupation">Должность:</label>
+                <input type="text" id="occupation" name="occupation" value="{{ person.occupation }}" required>
+            </div>
+            <div class="form-group">
+                <label for="occupation">Должность RU:</label>
+                <input type="text" id="occupation_ru" name="occupation_ru" value="{{ person.occupation_ru }}" required>
+            </div>
+            <div class="form-group">
+                <label for="person_id">Порядковый номер:</label>
+                <input type="text" id="person_id" name="person_id" value="{{ person.person_id }}" required>
+            </div>
+            <div class="form-group">
+                <label for="is_main">На главной странице:</label>
+                <input type="checkbox" id="is_main" name="is_main" {% if person.is_main %}checked{% endif %}>
+            </div>
+
+            <h3>Опыт работы</h3>
+            {% for work in existing_work_experience %}
+                <div class="work-experience">
+                    <div class="form-group">
+                        <label for="work_id">Порядковый номер:</label>
+                        <input type="number" name="work_id" value="{{ work.work_id }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="work_place">Место работы EN:</label>
+                        <input type="text" name="work_place" value="{{ work.place }}" placeholder="Место работы" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="work_position">Должность EN:</label>
+                        <input type="text" name="work_position" value="{{ work.position }}" placeholder="Должность" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="work_place_ru">Место работы RU:</label>
+                        <input type="text" name="work_place_ru" value="{{ work.place_ru }}" placeholder="Место работы" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="work_position_ru">Должность RU:</label>
+                        <input type="text" name="work_position_ru" value="{{ work.position_ru }}" placeholder="Должность" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="work_years">Годы работы(0000 - 0000):</label>
+                        <input type="text" name="work_years" value="{{ work.years }}" placeholder="Годы" required>
+                    </div>
+                </div>
+            {% endfor %}
+            <button type="button" onclick="addWorkExperience()">Добавить опыт работы</button>
+
+            <h3>Образование</h3>
+            {% for edu in existing_education %}
+                <div class="education">
+                    <div class="form-group">
+                        <label for="edu_ind">Порядковый номер:</label>
+                        <input type="number" name="edu_ind" value="{{ edu.edu_id }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="education_university">Университет EN:</label>
+                        <input type="text" name="education_university" value="{{ edu.university }}" placeholder="Учебное заведение" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="work_years">Годы обучения(0000 - 0000):</label>
+                        <input type="text" name="education_years" value="{{ edu.years }}" placeholder="Годы" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="work_years">Университет RU:</label>
+                        <input type="text" name="education_university_ru" value="{{ edu.university_ru }}" placeholder="Учебное заведение (рус)" required>
+                    </div>
+                </div>
+            {% endfor %}
+            <button type="button" onclick="addEducation()">Добавить образование</button>
+
+
+            <h3>Загрузить новые изображения</h3>
+            <input type="file" name="new_images" multiple>
+            <div class="form-group">
+                <label for="image">Изображение:</label>
+                {% if existing_image %}
+                <div>
+                    <img src="{{ url_for('static', filename='uploads/' + '0012' + '/' + existing_image) }}" alt="Image" style="width: 100px; height: auto;">
+                    <span>{{ existing_image }}</span>  <!-- Отображение имени изображения -->
+                    <input type="checkbox" name="delete_images" value="{{ existing_image }}"> Удалить
+                </div>
+                {% endif %}
+            </div>
+
+            <button type="submit">Сохранить изменения</button>
+            <a href="{{ url_for('main.admin_dashboard') }}">Назад к списку сотрудников</a>
+        </form>
+    </div>
+
+    <style>
+        .container {
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background: #f9f9f9;
+        }
+        .work-experience{
+            border: 1px solid #8d8989;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .flashes li {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        .flashes .error {
+            background-color: #f2dede;
+            color: #a94442;
+        }
+        .flashes .success {
+            background-color: #dff0d8;
+            color: #3c763d;
+        }
+    </style>
+    <script>
+        function addWorkExperience() {
+            const workDiv = document.createElement('div');
+            workDiv.classList.add('work-experience');
+            workDiv.innerHTML = `
+                <div class="form-group">
+                    <label for="work_id">Порядковый номер:</label>
+                    <input type="number" name="work_id" value=""> 
+                </div>
+                <div class="form-group">
+                    <label for="work_place">Место работы EN:</label>
+                    <input type="text" name="work_place"  placeholder="Место работы" required>
+                </div>
+                <div class="form-group">
+                    <label for="work_position">Должность EN:</label>
+                    <input type="text" name="work_position"  placeholder="Должность" required>
+                </div>
+                <div class="form-group">
+                    <label for="work_place_ru">Место работы RU:</label>
+                    <input type="text" name="work_place_ru"  placeholder="Место работы" required>
+                </div>
+                <div class="form-group">
+                    <label for="work_position_ru">Должность RU:</label>
+                    <input type="text" name="work_position_ru"  placeholder="Должность" required>
+                </div>
+                <div class="form-group">
+                    <label for="work_years">Годы работы(0000 - 0000):</label>
+                    <input type="text" name="work_years"  placeholder="Годы" required>
+                </div>
+            `;
+            document.querySelector('form').insertBefore(workDiv, document.querySelector('h3:nth-of-type(2)'));
+        }
+    
+        function addEducation() {
+            const eduDiv = document.createElement('div');
+            eduDiv.classList.add('education');
+            eduDiv.innerHTML = `
+                <div class="form-group">
+                    <label for="edu_ind">Порядковый номер:</label>
+                    <input type="number" name="edu_ind" value="">
+                </div>
+                <div class="form-group">
+                    <label for="education_university">Университет EN:</label>
+                    <input type="text" name="education_university"  placeholder="Учебное заведение" required>
+                </div>
+                <div class="form-group">
+                    <label for="work_years">Годы обучения(0000 - 0000):</label>
+                    <input type="text" name="education_years"  placeholder="Годы" required>
+                </div>
+                <div class="form-group">
+                    <label for="work_years">Университет RU:</label>
+                    <input type="text" name="education_university_ru"  placeholder="Учебное заведение (рус)" required>
+                </div>
+            `;
+            document.querySelector('form').insertBefore(eduDiv, document.querySelector('button[type="submit"]'));
+        }
+    </script>
+</body>
+</html>

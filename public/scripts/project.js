@@ -1,11 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
   const loaderAnimation = document.getElementById('loaderAnimation');
+  const loaderElement = document.getElementById('loader');
 
+  // Начинаем анимацию лоадера
   loaderAnimation.play();
 
-  loaderAnimation.addEventListener('complete', () => {
-    document.getElementById('loader').style.display = 'none';
-  });
+  // Убираем лоадер через 5 секунд или при успешной загрузке
+  const removeLoaderAfterDelay = setTimeout(() => {
+    loaderElement.style.display = 'none';
+  }, 5000);
 
   const pageHeader = document.querySelector(".page-header");
   const toggleMenu = document.querySelector(".toggle-menu");
@@ -32,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   toggleMenu.addEventListener("click", toggleMenuHandler);
-  
+
   const button = document.querySelector('.buttom');
   const popup = document.querySelector('.popup');
 
@@ -42,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  popup.addEventListener('click', (event) => {
+  popup.addEventListener('click', () => {
     popup.classList.remove('active');
   });
 
@@ -100,48 +103,52 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const preloadImages = async (images) => {
-    for (const image of images) {
-      const imageKey = `${projectData.name}_${image}`; 
-      const storedImage = await getImageFromIndexedDB(imageKey);
-      
-      if (!storedImage) {
-        try {
-          const response = await fetch('/public/uploads/' + projectData.name + '/' + image);
-          const blob = await response.blob();
+    const promises = images
+      .filter(image => image !== '00.jpg') // Исключаем 00.jpg
+      .map(async (image) => {
+        const imageKey = `${projectData.name}_${image}`;
+        const storedImage = await getImageFromIndexedDB(imageKey);
+        if (!storedImage) {
+          console.log(`Загружаем изображение: ${image}`); // Лог для проверки загрузки
+          try {
+            const response = await fetch(`/public/uploads/${projectData.slug}/${image}`);
+            if (!response.ok) throw new Error(`Не удалось загрузить изображение: ${response.statusText}`);
+            
+            const blob = await response.blob();
+            // Сжимаем изображение с использованием Canvas
+            const imgElement = document.createElement('img');
+            imgElement.src = URL.createObjectURL(blob);
 
-          // Сжимаем изображение с использованием Canvas
-          const imgElement = document.createElement('img');
-          imgElement.src = URL.createObjectURL(blob);
+            await new Promise((resolve) => {
+              imgElement.onload = async () => {
+                const canvas = document.createElement('canvas');
+                canvas.width = imgElement.width; 
+                canvas.height = imgElement.height;
 
-          await new Promise((resolve) => {
-            imgElement.onload = async () => {
-              const canvas = document.createElement('canvas');
-              canvas.width = imgElement.width; 
-              canvas.height = imgElement.height;
+                const context = canvas.getContext('2d');
+                context.drawImage(imgElement, 0, 0);
 
-              const context = canvas.getContext('2d');
-              context.drawImage(imgElement, 0, 0);
+                const compressedBlob = await new Promise((resolve) => {
+                  canvas.toBlob((blob) => {
+                    resolve(blob);
+                  }, 'image/jpeg', 0.7);
+                });
 
-              // Сжимаем изображение (0.7 — уровень качества от 0 до 1)
-              const compressedBlob = await new Promise((resolve) => {
-                canvas.toBlob((blob) => {
-                  resolve(blob);
-                }, 'image/jpeg', 0.7);
-              });
-
-              const reader = new FileReader();
-              reader.onload = function (event) {
-                saveImageToIndexedDB(imageKey, event.target.result);
-                resolve();
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                  saveImageToIndexedDB(imageKey, event.target.result);
+                  resolve();
+                };
+                reader.readAsDataURL(compressedBlob);
               };
-              reader.readAsDataURL(compressedBlob);
-            };
-          });
-        } catch (error) {
-          console.error('Ошибка при предзагрузке изображения:', error);
+            });
+          } catch (error) {
+            console.error(`Ошибка при предзагрузке изображения: ${image}`, error);
+          }
         }
-      }
-    }
+      });
+
+    await Promise.all(promises);
   };
 
   const fetchData = async () => {
@@ -151,6 +158,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const lang = urlParams.get('lang') || 'en';
 
       const response = await fetch(`/api/projects/${projectSlug}?lang=${lang}`);
+      if (!response.ok) throw new Error(`Ошибка при загрузке данных: ${response.statusText}`);
+      
       const data = await response.json();
       projectData = data;
 
@@ -163,38 +172,43 @@ document.addEventListener('DOMContentLoaded', () => {
         description.innerHTML = projectData.description.split('\r\n').map(paragraph => `<p>${paragraph}</p>`).join('');
 
         if (projectData.images && projectData.images.length > 0) {
-          currentIndex = 1; 
+          currentIndex = 0; 
           await preloadImages(projectData.images);
           updateSliderImage();
+
+          // Убираем лоадер только после полной загрузки изображений
+          clearTimeout(removeLoaderAfterDelay); // Убираем таймаут, если загрузка завершена раньше
+          loaderElement.style.display = 'none';
         } else {
           console.error('Нет изображений для проекта');
+          loaderElement.style.display = 'none';
         }
       } else {
         console.error('Проект не найден');
+        loaderElement.style.display = 'none';
       }
     } catch (error) {
       console.error('Ошибка загрузки данных проекта:', error);
+      loaderElement.style.display = 'none';
     }
   };
 
   const updateSliderImage = async () => {
-    if (projectData.images && projectData.images.length > 0) {
+    if (projectData.images && projectData.images.length > 0 && projectData.images[currentIndex] !== '00.jpg') {
       const imageKey = `${projectData.name}_${projectData.images[currentIndex]}`;
       const storedImage = await getImageFromIndexedDB(imageKey);
-      sliderImg.src = storedImage ? storedImage : '/public/uploads/' + projectData.name + '/' + projectData.images[currentIndex];
+
+      sliderImg.src = storedImage ? storedImage : `/public/uploads/${projectData.slug}/${projectData.images[currentIndex]}`;
     }
   };
 
-  // Создаем область для навигации по изображениям
   sliderImg.addEventListener('click', (event) => {
     const sliderRect = sliderImg.getBoundingClientRect();
     const clickX = event.clientX;
 
     if (clickX < sliderRect.left + sliderRect.width / 2) {
-      // Нажатие на левую сторону
       currentIndex = (currentIndex - 1 + projectData.images.length) % projectData.images.length;
     } else {
-      // Нажатие на правую сторону
       currentIndex = (currentIndex + 1) % projectData.images.length;
     }
 
@@ -203,5 +217,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   openDatabase()
     .then(fetchData)
-    .catch(error => console.error('Ошибка при инициализации базы данных:', error));
+    .catch(error => {
+      console.error('Ошибка при инициализации базы данных:', error);
+      loaderElement.style.display = 'none';
+    });
 });

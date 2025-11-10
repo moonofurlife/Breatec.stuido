@@ -5,8 +5,8 @@ import os
 from datetime import datetime
 import json
 from . import db
-from app.models import Project, UploadedFile, User, Person, Education, WorkExperience
-from app.config import Config
+from models import Project, User, Person, Education, WorkExperience
+from config import Config
 from . import login_manager
 
 bp = Blueprint('main', __name__)
@@ -348,50 +348,51 @@ def edit_person(person_id):
                         print(f"Ошибка при удалении изображения {img}: {e}")
             person.image = existing_image
 
-        # Обработка опыта работы
-        work_ids = request.form.getlist('work_id')
-        # work_index = request.form.getlist('work_ind')
+        work_ids = request.form.getlist('work_id')  # Получаем идентификаторы для обновления
         work_places = request.form.getlist('work_place')
-        print(work_places)
         work_positions = request.form.getlist('work_position')
+        work_places_ru = request.form.getlist('work_place_ru')
+        work_positions_ru = request.form.getlist('work_position_ru')
         work_years = request.form.getlist('work_years')
 
         for i in range(len(work_places)):
-            if work_ids[i]:  # Если это уже существующая запись
-                work_instance = WorkExperience.query.get(work_ids[i])
-                if work_instance:
-                    # work_instance.work_id = work_index
-                    work_instance.place = work_places[i]
-                    work_instance.position = work_positions[i]
-                    work_instance.years = work_years[i]
-            else:  # Создаем новую запись
+            work_instance = WorkExperience.query.filter_by(work_id=work_ids[i]).first() 
+            if work_instance:
+                work_instance.place = work_places[i]
+                work_instance.position = work_positions[i]
+                work_instance.place_ru = work_places_ru[i]
+                work_instance.position_ru = work_positions_ru[i]
+                work_instance.years = work_years[i]
+            else:
+                print(work_ids[i])
+                print('новый')  # Если это новая запись
                 new_work = WorkExperience(
-                    person_id=person.id,
-                    # work_id = work_index[i],
+                    person_id=person_id,
+                    work_id=work_ids[i],  # Или присвойте здесь желаемое значение для новой записи
                     place=work_places[i],
                     position=work_positions[i],
-                    years=work_years[i]
+                    years=work_years[i],
+                    place_ru = work_places_ru[i],
+                    position_ru = work_positions_ru[i]
                 )
                 db.session.add(new_work)
 
         # Обработка образования
-        education_ids = request.form.getlist('education_id')
         edu_ids = request.form.getlist('edu_ind')
         education_universities = request.form.getlist('education_university')
         education_years = request.form.getlist('education_years')
         education_universities_ru = request.form.getlist('education_university_ru')
 
         for i in range(len(education_universities)):
-            if education_ids[i]:  # Если это уже существующая запись
-                education_instance = Education.query.get(education_ids[i])
-                if education_instance:
-                    education_instance.edu_id = edu_ids[i]
-                    education_instance.university = education_universities[i]
-                    education_instance.years = education_years[i]
-                    education_instance.university_ru = education_universities_ru[i]
+            education_instance = Education.query.filter_by(edu_id=edu_ids[i]).first()
+            if education_instance:
+                education_instance.edu_id = edu_ids[i]
+                education_instance.university = education_universities[i]
+                education_instance.years = education_years[i]
+                education_instance.university_ru = education_universities_ru[i]
             else:  # Создаем новую запись
                 new_education = Education(
-                    person_id=person.id,
+                    person_id=person_id,
                     edu_id = edu_ids[i],
                     university=education_universities[i],
                     years=education_years[i],
@@ -428,17 +429,87 @@ def delete_person(person_id):
     
     return redirect(url_for('main.admin_dashboard'))
 
+@bp.route('/api/employees/main', methods=['GET'])
+def get_main_employees():
+    # Получаем параметр языка из запроса (по умолчанию - 'en')
+    lang = request.args.get('lang', 'en')
+
+    # Получаем всех сотрудников, у которых is_main == True
+    main_employees = Person.query.filter_by(is_main=True).all()
+
+    # Формируем список сотрудников для возврата
+    employee_list = []
+    for employee in main_employees:
+        employee_data = {
+            'id': employee.id,
+            'person_id': employee.person_id,
+            'name': employee.name_ru if lang == 'ru' else employee.name,
+            'occupation': employee.occupation_ru if lang == 'ru' else employee.occupation,
+            'image': employee.image,
+            'education': [],
+            'work_experience': []
+        }
+
+        # Получаем информацию об образовании 
+        education_records = Education.query.filter_by(person_id=employee.id).all()
+        for edu in education_records:
+            edu_data = {
+                'edu_id': edu.edu_id,
+                'university': edu.university_ru if lang == 'ru' else edu.university,
+                'years': edu.years
+            }
+            employee_data['education'].append(edu_data)
+
+        # Получаем информацию о работе
+        work_records = WorkExperience.query.filter_by(person_id=employee.id).all()
+        for work in work_records:
+            work_data = {
+                'work_id': work.work_id,
+                'place': work.place_ru if lang == 'ru' else work.place,
+                'position': work.position_ru if lang == 'ru' else work.position,
+                'years': work.years
+            }
+            employee_data['work_experience'].append(work_data)
+
+        employee_list.append(employee_data)
+
+    # Возвращаем список сотрудников в формате JSON
+    return jsonify(employee_list)
+
+@bp.route('/api/employees/non-main', methods=['GET'])
+def get_non_main_employees():
+    # Получаем параметр языка из запроса (по умолчанию - 'en')
+    lang = request.args.get('lang', 'en')
+
+    # Получаем всех сотрудников, у которых is_main == False
+    non_main_employees = Person.query.filter_by(is_main=False).all()
+
+    # Формируем список сотрудников для возврата
+    employee_list = []
+    for employee in non_main_employees:
+        employee_data = {
+            'id': employee.id,
+            'person_id': employee.person_id,
+            'name': employee.name_ru if lang == 'ru' else employee.name,
+            'occupation': employee.occupation_ru if lang == 'ru' else employee.occupation,
+            'image': employee.image
+        }
+        employee_list.append(employee_data)
+
+    # Возвращаем список сотрудников в формате JSON
+    return jsonify(employee_list)
+
+
 @bp.route('/')
 def index():
-    # Главное представление
-    # projects = Project.query.all()
     return render_template('index.html')
 
 
 # Страница "Studio"
 @bp.route('/studio')
 def studio():
-    return render_template('studio.html')
+    lang = request.args.get('lang', 'en')
+    return render_template('studio.html',lang=lang)
 
 
 # Страница "Contacts"
@@ -463,20 +534,7 @@ def project(slug):
     lang = request.args.get('lang', 'en') 
     return render_template('projects.html', project=project_data, lang=lang)
 
-# Обработка статических файлов (CSS, JS, изображения)
-@bp.route('/public/<path:path>')
-def static_files(path):
-    return send_from_directory('public', path)
 
-
-# @bp.route('/admin/delete_project/<int:project_id>', methods=['POST'])
-# def delete_project(project_id):
-#     project = Project.query.get_or_404(project_id)
-#     os.remove(project.images)  # Удалите какие-либо изображения, если это необходимо
-#     db.session.delete(project)
-#     db.session.commit()
-#     flash('Проект успешно удален!')
-#     return redirect(url_for('main.admin_dashboard'))
 
 @bp.route('/admin/delete_image/<int:project_id>/<int:image_index>', methods=['GET'])
 def delete_image(project_id, image_index):
@@ -491,46 +549,3 @@ def delete_image(project_id, image_index):
             flash('Изображение успешно удалено!')
     return redirect(url_for('main.edit_project', project_id=project_id))
 
-# Пример API для получения проекта по ID
-# @bp.route('/api/project/<int:project_id>', methods=['GET'])
-# def get_project(project_id):
-#     project = Project.query.get_or_404(project_id)
-#     return jsonify({
-#         'id': project.id,
-#         'name': project.name,
-#         'slug': project.slug,
-#         'location': project.location,
-#         'area': project.area,
-#         'process': project.process,
-#         'client': project.client,
-#         'description': project.description,
-#         'images': project.images.split(',') if project.images else []
-#     })
-
-# Добавление файла
-@bp.route('/upload', methods=['POST'])
-def upload_file():
-    if 'file' not in request.files:
-        flash('Нет файла для загрузки')
-        return redirect(url_for('main.admin_dashboard'))
-    
-    file = request.files['file']
-    
-    if file.filename == '':
-        flash('Нет выбранного файла')
-        return redirect(url_for('main.admin_dashboard'))
-    
-    if file and Config.allowed_file(file.filename):
-        filename = secure_filename(file.filename)
-        file_path = os.path.join(Config.UPLOAD_FOLDER, filename)
-        file.save(file_path)
-
-        # Добавление в базу данных
-        new_file = UploadedFile(filename=filename, filepath=file_path)
-        db.session.add(new_file)
-        db.session.commit()
-
-        flash('Файл успешно загружен!')
-        return redirect(url_for('main.admin_dashboard'))
-
-    return redirect(url_for('main.admin_dashboard'))

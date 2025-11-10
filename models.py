@@ -1,6 +1,16 @@
 from datetime import datetime
 from flask_login import UserMixin
-from . import db 
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
+from app import application
+
+application.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+application.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(application)
+migrate = Migrate()
+migrate.init_app(application, db)
+
+
 
 class UploadedFile(db.Model):
     id = db.Column(db.Integer, primary_key=True)
